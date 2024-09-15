@@ -1,3 +1,4 @@
+import { getCategoryStyles } from "@/utils";
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
 
 interface Props {
@@ -45,7 +46,11 @@ export const ListUsersSimple = ({ people }: Props) => {
           <div className="flex items-center justify-between gap-x-4 sm:w-1/2 sm:flex-none">
             <div className="hidden sm:block">
               <p className="text-sm leading-6 text-gray-900">{person.role}</p>
-              <span className="bg-amber-100 text-amber-500 font-medium px-2 py-[2px] text-xs border-amber-200 border rounded-md">
+              <span
+                className={`bg-amber-100 text-amber-500 font-medium px-2 py-[2px] text-xs border-amber-200 border rounded-md capitalize ${getCategoryStyles(
+                  person.category
+                )}`}
+              >
                 {person.category}
               </span>
             </div>

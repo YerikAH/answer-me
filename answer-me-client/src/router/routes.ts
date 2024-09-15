@@ -8,5 +8,6 @@ export enum ROUTES {
   SETTINGS = "/settings",
   CASES = "/cases",
   USERS = "/users",
+  USER = "/user",
   LAWYERS = "/lawyers",
 }

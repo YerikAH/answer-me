@@ -6,6 +6,7 @@ import {
   NotFound,
   Register,
   Settings,
+  User,
   Users,
 } from "@/pages";
 import { createBrowserRouter } from "react-router-dom";
@@ -52,6 +53,10 @@ const router = [
       {
         element: <Users />,
         path: ROUTES.USERS,
+      },
+      {
+        element: <User />,
+        path: ROUTES.USER,
       },
       // {
       //   element: <AttendanceGroup />,
