@@ -8,3 +8,4 @@ export { default as Cases } from "./cases";
 export { default as Lawyers } from "./lawyers";
 export { default as Users } from "./users";
 export { default as User } from "./user";
+export { default as Lawyer } from "./lawyer";
