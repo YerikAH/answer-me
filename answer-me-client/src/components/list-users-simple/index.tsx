@@ -6,9 +6,8 @@ interface Props {
     email: string;
     role: string;
     imageUrl: string;
-    lastSeen: string;
-    lastSeenDateTime: string;
     href: string;
+    category: string;
   }[];
 }
 
@@ -46,21 +45,9 @@ export const ListUsersSimple = ({ people }: Props) => {
           <div className="flex items-center justify-between gap-x-4 sm:w-1/2 sm:flex-none">
             <div className="hidden sm:block">
               <p className="text-sm leading-6 text-gray-900">{person.role}</p>
-              {person.lastSeen ? (
-                <p className="mt-1 text-xs leading-5 text-gray-500">
-                  Last seen{" "}
-                  <time dateTime={person.lastSeenDateTime}>
-                    {person.lastSeen}
-                  </time>
-                </p>
-              ) : (
-                <div className="mt-1 flex items-center gap-x-1.5">
-                  <div className="flex-none rounded-full bg-emerald-500/20 p-1">
-                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  </div>
-                  <p className="text-xs leading-5 text-gray-500">Online</p>
-                </div>
-              )}
+              <span className="bg-amber-100 text-amber-500 font-medium px-2 py-[2px] text-xs border-amber-200 border rounded-md">
+                {person.category}
+              </span>
             </div>
             <ChevronRightIcon
               aria-hidden="true"
