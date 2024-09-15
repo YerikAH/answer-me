@@ -10,10 +10,10 @@ export const SearchInput = () => {
         />
       </div>
       <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Buscar casos registrados..."
+        id="text"
+        name="text"
+        type="text"
+        placeholder="Buscar..."
         className="block w-full bg-zinc-100 rounded-lg border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
       />
     </div>
