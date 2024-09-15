@@ -1,10 +1,15 @@
-import { Stats } from "@/components";
+import {
+  GoBack,
+  SectionHeader,
+  Stats,
+  Table,
+  UserDetailCard,
+} from "@/components";
 import { useTitle } from "@/hooks";
 import { ROUTES } from "@/router/routes";
-import { getCategoryStyles } from "@/utils";
-import { ChevronLeftIcon } from "@heroicons/react/24/outline";
+import { TableCellsIcon } from "@heroicons/react/16/solid";
+import { ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const stats = [
   {
@@ -27,6 +32,149 @@ const stats = [
   },
 ];
 
+const people = [
+  {
+    id: "0001",
+    date: "15 de Enero del 2024",
+    case: "Me acusan de pedofilia extrema.",
+    fullName: "Harvey Vasquez Huaranga Yerik",
+    estimation: "1000.99",
+  },
+  {
+    id: "0002",
+    date: "23 de Julio del 2024",
+    case: "Me acusan de fraude masivo.",
+    fullName: "Carlos Ramirez Vega",
+    estimation: "2500.50",
+  },
+  {
+    id: "0003",
+    date: "12 de Marzo del 2024",
+    case: "Me acusan de robo cibernético.",
+    fullName: "Ana Lucia Ortiz",
+    estimation: "3200.75",
+  },
+  {
+    id: "0004",
+    date: "9 de Septiembre del 2024",
+    case: "Me acusan de corrupción política.",
+    fullName: "Marcos Perez Gutierrez",
+    estimation: "5000.00",
+  },
+  {
+    id: "0005",
+    date: "7 de Abril del 2024",
+    case: "Me acusan de malversación de fondos.",
+    fullName: "Luisa Gomez Martinez",
+    estimation: "7800.25",
+  },
+  {
+    id: "0006",
+    date: "30 de Junio del 2024",
+    case: "Me acusan de fraude masivo.",
+    fullName: "Juan Hernandez Lopez",
+    estimation: "3500.99",
+  },
+  {
+    id: "0007",
+    date: "14 de Febrero del 2024",
+    case: "Me acusan de robo cibernético.",
+    fullName: "Pedro Sanchez Morales",
+    estimation: "2200.00",
+  },
+  {
+    id: "0008",
+    date: "28 de Octubre del 2024",
+    case: "Me acusan de corrupción política.",
+    fullName: "Carmen Diaz Flores",
+    estimation: "4000.45",
+  },
+  {
+    id: "0009",
+    date: "1 de Mayo del 2024",
+    case: "Me acusan de malversación de fondos.",
+    fullName: "Manuel Torres Reyes",
+    estimation: "6000.75",
+  },
+  {
+    id: "0010",
+    date: "19 de Noviembre del 2024",
+    case: "Me acusan de fraude masivo.",
+    fullName: "Patricia Mendoza Silva",
+    estimation: "2500.00",
+  },
+  {
+    id: "0011",
+    date: "3 de Diciembre del 2024",
+    case: "Me acusan de pedofilia extrema.",
+    fullName: "Ricardo Suarez Ruiz",
+    estimation: "900.50",
+  },
+  {
+    id: "0012",
+    date: "21 de Febrero del 2024",
+    case: "Me acusan de robo cibernético.",
+    fullName: "Laura Romero Pineda",
+    estimation: "3100.20",
+  },
+  {
+    id: "0013",
+    date: "27 de Agosto del 2024",
+    case: "Me acusan de corrupción política.",
+    fullName: "Jorge Aguilar Soto",
+    estimation: "6500.00",
+  },
+  {
+    id: "0014",
+    date: "15 de Abril del 2024",
+    case: "Me acusan de malversación de fondos.",
+    fullName: "Diana Chavez Torres",
+    estimation: "7200.40",
+  },
+  {
+    id: "0015",
+    date: "30 de Octubre del 2024",
+    case: "Me acusan de fraude masivo.",
+    fullName: "Oscar Vasquez Rivera",
+    estimation: "2700.30",
+  },
+  {
+    id: "0016",
+    date: "9 de Junio del 2024",
+    case: "Me acusan de pedofilia extrema.",
+    fullName: "Claudia Gomez Perez",
+    estimation: "1100.75",
+  },
+  {
+    id: "0017",
+    date: "3 de Septiembre del 2024",
+    case: "Me acusan de robo cibernético.",
+    fullName: "Andres Navarro Cruz",
+    estimation: "3400.50",
+  },
+  {
+    id: "0018",
+    date: "12 de Mayo del 2024",
+    case: "Me acusan de corrupción política.",
+    fullName: "Julia Morales Fernandez",
+    estimation: "5600.99",
+  },
+  {
+    id: "0019",
+    date: "5 de Julio del 2024",
+    case: "Me acusan de malversación de fondos.",
+    fullName: "Josefa Medina Campos",
+    estimation: "8600.25",
+  },
+  {
+    id: "0020",
+    date: "20 de Agosto del 2024",
+    case: "Me acusan de fraude masivo.",
+    fullName: "Miguel Herrera Lopez",
+    estimation: "4800.50",
+  },
+];
+
 export default function User() {
   const { changeTitle } = useTitle();
   useEffect(() => {
@@ -34,68 +182,23 @@ export default function User() {
   }, []);
   return (
     <div className="mx-auto max-w-6xl w-full mt-12">
-      <Link
-        to={ROUTES.USERS}
-        className="text-zinc-500 text-sm font-medium flex items-center"
-      >
-        <ChevronLeftIcon className="size-4 text-zinc-500" />
-        Usuarios
-      </Link>
-
-      <div className="flex items-end justify-between mt-8 mb-16">
-        <div className="flex items-center">
-          <div className="flex items-center gap-8">
-            <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt="avatar"
-              className="w-32 h-24 rounded-lg object-cover"
-            />
-
-            <div className="">
-              <div className="flex items-center gap-4">
-                <h1 className="text-lg text-zinc-900 font-semibold">
-                  Vasquez Harvey
-                </h1>
-                <span
-                  className={`font-medium px-2 py-[2px] text-xs  border rounded-md capitalize ${getCategoryStyles(
-                    "silver"
-                  )}`}
-                >
-                  silver
-                </span>
-              </div>
-              <p className="text-sm text-zinc-600 mt-4">
-                Correo electrónico:{" "}
-                <b className="text-zinc-800 font-semibold">john@example.com</b>
-              </p>
-              <p className="text-sm text-zinc-600">
-                Número de celular:{" "}
-                <b className="text-zinc-800 font-semibold">+51 967 523 180</b>
-              </p>
-              <p className="text-sm text-zinc-600">
-                Número de identificación:{" "}
-                <b className="text-zinc-800 font-semibold">77330159</b>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className=" flex items-center  gap-x-4">
-          <button
-            type="button"
-            className="text-sm font-semibold  text-gray-900 py-2 px-3 bg-zinc-50 hover:bg-zinc-200 transition-all rounded-lg border"
-          >
-            Contactar
-          </button>
-          <button
-            type="submit"
-            className="inline-flex justify-center rounded-lg bg-zinc-900 px-3 transition-all py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            Eliminar
-          </button>
-        </div>
-      </div>
-
+      <GoBack name="Usuarios" route={ROUTES.USERS} />
+      <UserDetailCard />
+      <SectionHeader icon={ArrowTrendingUpIcon} title="Actividad" />
       <Stats stats={stats} />
+
+      <SectionHeader icon={TableCellsIcon} title="Casos del usuario" />
+
+      <Table
+        data={people}
+        headers={[
+          "ID",
+          "Fecha de publicación",
+          "Caso",
+          "Nombre completo",
+          "Estimación",
+        ]}
+      />
     </div>
   );
 }

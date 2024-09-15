@@ -152,17 +152,19 @@ export default function Cases() {
         Casos registrados
       </h2>
       <TableOptions />
-      <Table
-        data={people}
-        headers={[
-          "ID",
-          "Fecha de publicación",
-          "Caso",
-          "Nombre completo",
-          "Estimación",
-        ]}
-      />
-      <Pagination />
+      <div className="mt-8">
+        <Table
+          data={people}
+          headers={[
+            "ID",
+            "Fecha de publicación",
+            "Caso",
+            "Nombre completo",
+            "Estimación",
+          ]}
+        />
+        <Pagination />
+      </div>
     </div>
   );
 }

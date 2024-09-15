@@ -1,3 +1,6 @@
+export { SectionHeader } from "./section-header";
+export { UserDetailCard } from "./user-detail-card";
+export { GoBack } from "./go-back";
 export { Stats } from "./stats";
 export { ListUsersSimple } from "./list-users-simple";
 export { ListUsers } from "./list-users";

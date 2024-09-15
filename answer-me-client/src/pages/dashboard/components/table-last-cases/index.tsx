@@ -1,4 +1,4 @@
-import { Table } from "@/components";
+import { SectionHeader, Table } from "@/components";
 import { BriefcaseIcon } from "@heroicons/react/16/solid";
 const people = [
   {
@@ -145,15 +145,8 @@ const people = [
 
 export const TableLastCases = () => {
   return (
-    <div>
-      <div className="flex justify-between items-center mt-8">
-        <h2 className="text-base font-semibold mt-6 mb-3 flex items-center gap-2">
-          <span className="bg-zinc-200 size-8 flex items-center justify-center rounded-full">
-            <BriefcaseIcon className="text-zinc-900 size-4" />
-          </span>
-          Últimos casos sin resolver
-        </h2>
-      </div>
+    <div className="mt-8">
+      <SectionHeader icon={BriefcaseIcon} title="Últimos casos sin resolver" />
       <Table
         data={people}
         headers={[

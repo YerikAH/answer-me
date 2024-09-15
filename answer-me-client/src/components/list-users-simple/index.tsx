@@ -1,5 +1,6 @@
 import { getCategoryStyles } from "@/utils";
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
+import { Link } from "react-router-dom";
 
 interface Props {
   people: {
@@ -16,7 +17,8 @@ export const ListUsersSimple = ({ people }: Props) => {
   return (
     <ul role="list" className="divide-y divide-gray-100 mt-8">
       {people.map((person) => (
-        <li
+        <Link
+          to={person.href}
           key={person.email}
           className="relative flex justify-between py-5 hover:bg-zinc-200 transition-all"
         >
@@ -28,10 +30,10 @@ export const ListUsersSimple = ({ people }: Props) => {
             />
             <div className="min-w-0 flex-auto">
               <p className="text-sm font-semibold leading-6 text-gray-900">
-                <a href={person.href}>
+                <Link to={person.href}>
                   <span className="absolute inset-x-0 -top-px bottom-0" />
                   {person.name}
-                </a>
+                </Link>
               </p>
               <p className="mt-1 flex text-xs leading-5 text-gray-500">
                 <a
@@ -59,7 +61,7 @@ export const ListUsersSimple = ({ people }: Props) => {
               className="h-5 w-5 flex-none text-gray-400"
             />
           </div>
-        </li>
+        </Link>
       ))}
     </ul>
   );
