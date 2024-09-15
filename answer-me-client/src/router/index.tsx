@@ -2,6 +2,7 @@ import {
   Case,
   Cases,
   Dashboard,
+  Lawyer,
   Lawyers,
   Login,
   NotFound,
@@ -27,10 +28,6 @@ const router = [
     element: <NotFound />,
     path: ROUTES.NOT_FOUND,
   },
-  // {
-  //   element: <Home />,
-  //   path: ROUTES.HOME,
-  // },
   {
     element: <Sidebar />,
     path: ROUTES.HOME,
@@ -63,24 +60,10 @@ const router = [
         element: <Case />,
         path: ROUTES.CASE,
       },
-      // {
-      //   element: <AttendanceGroup />,
-      //   path: ROUTES.ATTENDANCE_GROUP,
-      //   children: [
-      //     {
-      //       element: <Attendance />,
-      //       path: ROUTES.ATTENDANCE,
-      //     },
-      //   ],
-      // },
-      // {
-      //   element: <Settings />,
-      //   path: ROUTES.SETTINGS,
-      // },
-      // {
-      //   element: <Settings />,
-      //   path: ROUTES.USERS,
-      // },
+      {
+        element: <Lawyer />,
+        path: ROUTES.LAWYER,
+      },
     ],
   },
 ];

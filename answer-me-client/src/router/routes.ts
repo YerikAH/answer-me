@@ -2,7 +2,6 @@ export enum ROUTES {
   HOME = "/",
   LOGIN = "/ingresar",
   REGISTER = "/registrarse",
-  PROFILE = "/perfil",
   NOT_FOUND = "*",
   DASHBOARD = "/dashboard",
   SETTINGS = "/configuracion",
@@ -11,4 +10,5 @@ export enum ROUTES {
   USERS = "/usuarios",
   USER = "/usuarios/:id",
   LAWYERS = "/abogados",
+  LAWYER = "/abogados/:id",
 }
