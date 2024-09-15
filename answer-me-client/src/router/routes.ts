@@ -7,6 +7,7 @@ export enum ROUTES {
   DASHBOARD = "/dashboard",
   SETTINGS = "/configuracion",
   CASES = "/casos",
+  CASE = "/casos/:id",
   USERS = "/usuarios",
   USER = "/usuarios/:id",
   LAWYERS = "/abogados",

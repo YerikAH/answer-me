@@ -1,9 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 interface Props {
   headers: string[];
   data: any[];
 }
 
 export const Table = ({ headers, data }: Props) => {
+  const navigate = useNavigate();
+
+  const navigateTo = (id: string) => {
+    navigate(id);
+  };
   return (
     <div className=" flow-root">
       <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,6 +34,7 @@ export const Table = ({ headers, data }: Props) => {
                 <tr
                   key={person.id}
                   className="hover:bg-zinc-200 transition-all cursor-pointer"
+                  onClick={() => navigateTo(person.id)}
                 >
                   {Object.keys(person).map((item, idx) => (
                     <td

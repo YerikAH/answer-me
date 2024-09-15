@@ -186,9 +186,7 @@ export default function User() {
       <UserDetailCard />
       <SectionHeader icon={ArrowTrendingUpIcon} title="Actividad" />
       <Stats stats={stats} />
-
       <SectionHeader icon={TableCellsIcon} title="Casos del usuario" />
-
       <Table
         data={people}
         headers={[

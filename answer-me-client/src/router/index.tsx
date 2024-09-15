@@ -1,4 +1,5 @@
 import {
+  Case,
   Cases,
   Dashboard,
   Lawyers,
@@ -57,6 +58,10 @@ const router = [
       {
         element: <User />,
         path: ROUTES.USER,
+      },
+      {
+        element: <Case />,
+        path: ROUTES.CASE,
       },
       // {
       //   element: <AttendanceGroup />,
