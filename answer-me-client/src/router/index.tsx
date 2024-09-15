@@ -1,3 +1,6 @@
+import { createBrowserRouter } from "react-router-dom";
+import { ROUTES } from "./routes";
+import { Sidebar } from "@/layout";
 import {
   Case,
   Cases,
@@ -11,9 +14,6 @@ import {
   User,
   Users,
 } from "@/pages";
-import { createBrowserRouter } from "react-router-dom";
-import { ROUTES } from "./routes";
-import { Sidebar } from "@/layout";
 
 const router = [
   {
