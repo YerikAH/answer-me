@@ -1,19 +1,22 @@
+import { SectionHeader } from "@/components";
 import { PaperClipIcon } from "@heroicons/react/16/solid";
+import { InformationCircleIcon } from "@heroicons/react/20/solid";
 
 export const CaseDetails = () => {
   return (
     <div className="mt-16">
       <div className="px-4 sm:px-0">
-        <h3 className="text-base font-semibold leading-7 text-gray-900">
-          Información del caso
-        </h3>
+        <SectionHeader
+          icon={InformationCircleIcon}
+          title="Información del caso"
+        />
         <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
           Una vista general de los detalles clave del caso, incluyendo fechas
           importantes, partes involucradas, y el estado actual del procedimiento
           legal.
         </p>
       </div>
-      
+
       <div className="mt-6 border-t border-gray-100">
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
