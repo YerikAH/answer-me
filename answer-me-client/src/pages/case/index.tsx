@@ -26,8 +26,8 @@ export default function Case() {
           resuelto
         </span>
       </div>
-      <div className="mt-4 justify-between items-center flex">
-        <div className="flex items-center justify-start gap-8">
+      <div className="mt-4 justify-between items-center flex flex-wrap gap-4">
+        <div className="flex items-center justify-start gap-8 flex-wrap">
           <IconLabel
             icon={CalendarIcon}
             label="Creado el 24 de julio del 2024"
