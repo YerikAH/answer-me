@@ -38,14 +38,14 @@ const getChartOptions = () => {
     },
     yaxis: {
       labels: {
-        formatter: function (value) {
+        formatter: function (value: string) {
           return value + "%";
         },
       },
     },
     xaxis: {
       labels: {
-        formatter: function (value) {
+        formatter: function (value: string) {
           return value + "%";
         },
       },
