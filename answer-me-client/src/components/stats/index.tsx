@@ -8,13 +8,11 @@ interface Props {
 }
 export const Stats = ({ stats }: Props) => {
   return (
-    <dl
-      className={`mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${stats.length} gap-16`}
-    >
+    <dl className={`mx-auto flex items-center gap-16 flex-wrap justify-start`}>
       {stats.map((stat) => (
         <div
           key={stat.name}
-          className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 py-6  border-t"
+          className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 py-6  border-t max-w-56 w-full"
         >
           <dt className="text-sm font-medium leading-6 text-gray-500">
             {stat.name}

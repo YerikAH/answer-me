@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   headers: string[];
   data: any[];
+  onlyRead?: boolean;
 }
 
-export const Table = ({ headers, data }: Props) => {
+export const Table = ({ headers, data, onlyRead }: Props) => {
   const navigate = useNavigate();
 
   const navigateTo = (id: string) => {
+    if (onlyRead) return;
     navigate(id);
   };
   return (

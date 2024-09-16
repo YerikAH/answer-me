@@ -30,6 +30,12 @@ const stats = [
     change: "-1.39%",
     changeType: "positive",
   },
+  {
+    name: "Outstanding invoices",
+    value: "$245,988.00",
+    change: "-1.39%",
+    changeType: "positive",
+  },
 ];
 
 const people = [
@@ -196,6 +202,7 @@ export default function User() {
           "Nombre completo",
           "Estimación",
         ]}
+        onlyRead
       />
     </div>
   );
