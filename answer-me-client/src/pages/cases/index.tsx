@@ -1,6 +1,8 @@
 import { Table } from "@/components";
 import { TableOptions } from "./components/table-options";
 import { Pagination } from "./components/pagination";
+import { useEffect } from "react";
+import { useTitle } from "@/hooks";
 
 const people = [
   {
@@ -146,6 +148,10 @@ const people = [
 ];
 
 export default function Cases() {
+  const { changeTitle } = useTitle();
+  useEffect(() => {
+    changeTitle("Casos -  Arxatec");
+  }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
       <h2 className="text-xl font-semibold leading-7 text-zinc-900">

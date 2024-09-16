@@ -1,8 +1,14 @@
 import logo from "@/assets/logo.png";
+import { useTitle } from "@/hooks";
 import { ROUTES } from "@/router/routes";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
+  const { changeTitle } = useTitle();
+  useEffect(() => {
+    changeTitle("Error 404 -  Arxatec");
+  }, []);
   return (
     <div className="grid h-screen grid-cols-1 grid-rows-[1fr,auto,1fr] bg-white lg:grid-cols-[max(50%,36rem),1fr]">
       <header className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-10 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:px-8">

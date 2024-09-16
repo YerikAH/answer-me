@@ -1,5 +1,7 @@
 import { ListUsersSimple } from "@/components";
 import { ListOptions } from "./components/list-options";
+import { useEffect } from "react";
+import { useTitle } from "@/hooks";
 
 const people = [
   {
@@ -59,6 +61,10 @@ const people = [
 ];
 
 export default function Users() {
+  const { changeTitle } = useTitle();
+  useEffect(() => {
+    changeTitle("Usuarios -  Arxatec");
+  }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
       <h2 className="text-xl font-semibold leading-7 text-zinc-900">

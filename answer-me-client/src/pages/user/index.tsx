@@ -178,7 +178,7 @@ const people = [
 export default function User() {
   const { changeTitle } = useTitle();
   useEffect(() => {
-    changeTitle("Usuario -  Arxatec");
+    changeTitle("Usuarios -  Arxatec");
   }, []);
   return (
     <div className="mx-auto max-w-6xl w-full mt-12">

@@ -5,8 +5,14 @@ import { CaseDetails } from "./components/case-details";
 import { CalendarIcon } from "@heroicons/react/16/solid";
 import { IconLabel } from "./components/icon-label";
 import { BriefcaseIcon, CheckBadgeIcon } from "@heroicons/react/20/solid";
+import { useEffect } from "react";
+import { useTitle } from "@/hooks";
 
 export function Case() {
+  const { changeTitle } = useTitle();
+  useEffect(() => {
+    changeTitle("Casos -  Arxatec");
+  }, []);
   return (
     <div className="mt-12 mx-auto w-full max-w-6xl">
       <GoBack name="Casos" route={ROUTES.CASES} />
