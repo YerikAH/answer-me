@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 export const SearchInput = () => {
   return (
-    <div className="relative rounded-md shadow-sm w-80">
+    <div className="relative rounded-md shadow-sm max-w-80 w-full">
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <MagnifyingGlassIcon
           aria-hidden="true"

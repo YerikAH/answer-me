@@ -14,8 +14,8 @@ const filterBy = [
 ];
 export const ListOptions = () => {
   return (
-    <div className="flex items-center justify-between mt-6">
-      <div className="flex items-center flex-wrap gap-4">
+    <div className="flex items-start justify-between mt-6 flex-wrap gap-4 w-full">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-4">
         <SearchInput />
         <ActionDropdown options={sortBy} icon={ChevronUpDownIcon} />
       </div>

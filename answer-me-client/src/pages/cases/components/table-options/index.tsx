@@ -17,8 +17,8 @@ const FilterBy = [
 
 export const TableOptions = () => {
   return (
-    <div className="flex items-center justify-between mt-6">
-      <div className="flex items-center flex-wrap gap-4">
+    <div className="flex items-start justify-between mt-6 gap-4 flex-wrap w-full">
+      <div className="flex items-center flex-wrap gap-4 md:flex-nowrap">
         <SearchInput />
         <ActionDropdown options={sortBy} icon={ChevronUpDownIcon} />
       </div>
