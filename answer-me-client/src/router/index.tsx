@@ -5,6 +5,7 @@ import {
   Case,
   Cases,
   Dashboard,
+  Home,
   Lawyer,
   Lawyers,
   Login,
@@ -27,6 +28,10 @@ const router = [
   {
     element: <NotFound />,
     path: ROUTES.NOT_FOUND,
+  },
+  {
+    element: <Home />,
+    path: ROUTES.HOME,
   },
   {
     element: <Sidebar />,

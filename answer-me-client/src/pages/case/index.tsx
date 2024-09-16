@@ -8,7 +8,7 @@ import { BriefcaseIcon, CheckBadgeIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { useTitle } from "@/hooks";
 
-export function Case() {
+export default function Case() {
   const { changeTitle } = useTitle();
   useEffect(() => {
     changeTitle("Casos -  Arxatec");
