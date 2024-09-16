@@ -1,5 +1,7 @@
 import { ListUsers } from "@/components";
 import { ListOptions } from "./components/list-options";
+import { useEffect } from "react";
+import { useTitle } from "@/hooks";
 
 const people = [
   {
@@ -8,7 +10,7 @@ const people = [
     role: "Co-Founder / CEO",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "123",
   },
   {
     name: "Michael Foster",
@@ -16,7 +18,7 @@ const people = [
     role: "Co-Founder / CTO",
     imageUrl:
       "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "532",
   },
   {
     name: "Dries Vincent",
@@ -24,7 +26,7 @@ const people = [
     role: "Business Relations",
     imageUrl:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "54",
   },
   {
     name: "Lindsay Walton",
@@ -32,7 +34,7 @@ const people = [
     role: "Front-end Developer",
     imageUrl:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "8967",
   },
   {
     name: "Courtney Henry",
@@ -40,7 +42,7 @@ const people = [
     role: "Designer",
     imageUrl:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "06",
   },
   {
     name: "Tom Cook",
@@ -48,11 +50,15 @@ const people = [
     role: "Director of Product",
     imageUrl:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    id: "#",
+    id: "54",
   },
 ];
 
 export default function Lawyers() {
+  const { changeTitle } = useTitle();
+  useEffect(() => {
+    changeTitle("Abogados -  Arxatec");
+  }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
       <h2 className="text-xl font-semibold leading-7 text-zinc-900">

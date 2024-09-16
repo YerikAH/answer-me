@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 interface Props {
   users: {
@@ -13,7 +14,8 @@ export const ListUsers = ({ users }: Props) => {
   return (
     <ul role="list" className="divide-y divide-zinc-100 mt-8">
       {users.map((user) => (
-        <li
+        <Link
+          to={user.id}
           key={user.email}
           className="relative flex justify-between transition-all gap-x-6 px-4 py-5 hover:bg-zinc-200 cursor-pointer sm:px-6 lg:px-8"
         >
@@ -52,7 +54,7 @@ export const ListUsers = ({ users }: Props) => {
               className="h-5 w-5 flex-none text-zinc-400"
             />
           </div>
-        </li>
+        </Link>
       ))}
     </ul>
   );
