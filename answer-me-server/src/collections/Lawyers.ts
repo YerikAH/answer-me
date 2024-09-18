@@ -5,6 +5,35 @@ const Lawyers: CollectionConfig = {
   admin: {
     useAsTitle: "fullName",
   },
+  labels: {
+    plural: "Abogados",
+    singular: "Abogado",
+  },
+  access: {
+    create: ({ req: { user } }) => {
+      if (user && user.role === "administrador") {
+        return true;
+      }
+      return false;
+    },
+    update: ({ req: { user } }) => {
+      if (user) {
+        if (user.role === "administrador") {
+          return true;
+        }
+        return {
+          id: user.id,
+        };
+      }
+      return false;
+    },
+    delete: ({ req: { user } }) => {
+      if (user && user.role === "administrador") {
+        return true;
+      }
+      return false;
+    },
+  },
   fields: [
     {
       name: "fullName",

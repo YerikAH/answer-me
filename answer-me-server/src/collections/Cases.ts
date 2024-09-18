@@ -5,6 +5,34 @@ const Cases: CollectionConfig = {
   admin: {
     useAsTitle: "caseID",
   },
+  labels: {
+    plural: "Casos",
+    singular: "Caso",
+  },
+  access: {
+    create: ({ req: { user } }) => {
+      if (!user) return false;
+      return user.role === "usuario";
+    },
+    read: ({ req: { user } }) => {
+      if (user.role === "administrador" || user.role === "abogado") {
+        return true;
+      }
+      return {
+        createdBy: {
+          equals: user.id,
+        },
+      };
+    },
+    update: ({ req: { user }, data }) => {
+      if (user.role === "administrador") return true;
+      if (user.role === "abogado") {
+        return !data.assignedLawyer || data.assignedLawyer === user.id;
+      }
+      return false;
+    },
+    delete: () => false,
+  },
   fields: [
     {
       name: "caseID",
@@ -26,7 +54,6 @@ const Cases: CollectionConfig = {
         { label: "Penal", value: "penal" },
         { label: "Civil", value: "civil" },
         { label: "Laboral", value: "laboral" },
-        // Otras áreas del derecho
       ],
       required: true,
     },
@@ -57,12 +84,31 @@ const Cases: CollectionConfig = {
       type: "relationship",
       relationTo: "lawyers",
       label: "Abogado asignado",
+      access: {
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        read: ({ req: { user } }) => {
+          return true;
+        },
+      },
     },
     {
       name: "assignedUser",
       type: "relationship",
       relationTo: "users",
       label: "Usuario asignado",
+      access: {
+        create: () => false,
+        read: () => true,
+        update: () => false,
+      },
+      defaultValue: ({ user }) => {
+        return user?.id;
+      },
     },
     {
       name: "documents",
