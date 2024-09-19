@@ -13,6 +13,7 @@ import Questions from "./collections/Question";
 import Media from "./collections/Media";
 import es from "./translations/es.json";
 import { CustomLogo, CustomLogoFull } from "./components";
+import swagger from "payload-swagger";
 
 export default buildConfig({
   admin: {
@@ -42,7 +43,16 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
-  plugins: [payloadCloud()],
+  plugins: [
+    payloadCloud(),
+    swagger({
+      ui: {
+        title: "ArxaTec API",
+        lang: "es",
+        docExpansion: "list",
+      },
+    }),
+  ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
