@@ -35,9 +35,9 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
 
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col">
-      <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white ">
+      <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-slate-50 ">
         <div className="h-14 shrink-0 items-center flex  px-2 border-b">
-          <a className="flex items-center gap-2 bg-white w-full p-1 rounded-md hover:bg-zinc-100 cursor-pointer transition-all">
+          <a className="flex items-center gap-2 bg-slate-50 w-full p-1 rounded-md hover:bg-slate-200 cursor-pointer transition-all">
             <div className="size-8 border rounded-full overflow-hidden ">
               <img
                 alt="AsstLog"
@@ -45,7 +45,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-zinc-950 font-semibold text-sm">Arxatec</p>
+            <p className="text-slate-950 font-semibold text-sm">Arxatec</p>
           </a>
         </div>
         <nav className="flex flex-1 flex-col px-4">
@@ -58,8 +58,8 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                       to={item.href}
                       className={classNames(
                         location.pathname === item.href
-                          ? " text-zinc-700 hover:bg-zinc-100"
-                          : "text-zinc-600 hover:bg-zinc-100 ",
+                          ? " text-slate-700 hover:bg-slate-200"
+                          : "text-slate-600 hover:bg-slate-200 ",
                         "group flex gap-x-2 items-center rounded-lg py-1.5 px-2 text-sm font-semibold leading-6 transition-all"
                       )}
                     >
@@ -85,8 +85,8 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                       to={textToRoute(code.href)}
                       className={classNames(
                         code.href === location.pathname
-                          ? "text-zinc-700 hover:bg-zinc-100"
-                          : "text-zinc-600 hover:bg-zinc-100 ",
+                          ? "text-slate-700 hover:bg-slate-200"
+                          : "text-slate-600 hover:bg-slate-200 ",
                         "group flex gap-x-3 rounded-lg py-1.5 px-2 text-sm font-semibold leading-6  transition-all"
                       )}
                     >
@@ -103,8 +103,8 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                     href={item.href}
                     className={classNames(
                       location.pathname === item.href
-                        ? " text-zinc-700 hover:bg-zinc-100"
-                        : "text-zinc-600 hover:bg-zinc-100 ",
+                        ? " text-slate-700 hover:bg-slate-200"
+                        : "text-slate-600 hover:bg-slate-200 ",
                       "group flex gap-x-2 items-center rounded-lg py-1.5 px-2 text-sm font-semibold leading-6  transition-all"
                     )}
                   >
@@ -120,7 +120,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                 className="relative flex w-full text-left border-t pt-2 pb-2 mt-2"
               >
                 <div className="w-full">
-                  <MenuButton className="flex justify-between items-center gap-x-1.5 w-full rounded-md bg-white px-2 py-2 text-sm font-semibold text-gray-900  hover:bg-zinc-100">
+                  <MenuButton className="flex justify-between items-center gap-x-1.5 w-full rounded-md bg-slate-50 px-2 py-2 text-sm font-semibold text-gray-900  hover:bg-slate-200">
                     <div className="flex items-center gap-2">
                       <img
                         src="https://catalyst-demo.tailwindui.com/users/erica.jpg"
@@ -128,10 +128,10 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                         className="size-9 rounded-md border"
                       />
                       <div>
-                        <p className="text-zinc-900 text-left text-sm font-semibold">
+                        <p className="text-slate-900 text-left text-sm font-semibold">
                           Alessander
                         </p>
-                        <p className="text-zinc-500 text-left text-xs font-semibold">
+                        <p className="text-slate-500 text-left text-xs font-semibold">
                           alessander@gmail.com
                         </p>
                       </div>
@@ -152,7 +152,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                     <MenuItem>
                       <a
                         href="#"
-                        className=" px-4 py-2 flex text-sm text-zinc-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
+                        className=" px-4 py-2 flex text-sm text-slate-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
                       >
                         <UserCircleIcon className="size-4" />
                         Mi cuenta
@@ -163,7 +163,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                     <MenuItem>
                       <a
                         href="#"
-                        className=" px-4 py-2 flex text-sm text-zinc-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
+                        className=" px-4 py-2 flex text-sm text-slate-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
                       >
                         <ShieldCheckIcon className="size-4" />
                         Privacidad
@@ -172,7 +172,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                     <MenuItem>
                       <a
                         href="#"
-                        className=" px-4 py-2 flex text-sm text-zinc-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
+                        className=" px-4 py-2 flex text-sm text-slate-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
                       >
                         <LightBulbIcon className="size-4" />
                         Terminos y condiciones
@@ -183,7 +183,7 @@ export const SidebarDesktop = ({ navigation, codes, links }: Props) => {
                     <MenuItem>
                       <a
                         href="#"
-                        className=" px-4 py-2 flex text-sm text-zinc-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
+                        className=" px-4 py-2 flex text-sm text-slate-700 gap-2 rounded-md group hover:bg-blue-500 hover:text-white font-semibold items-center transition-all"
                       >
                         <ArrowRightStartOnRectangleIcon
                           className="size-4"

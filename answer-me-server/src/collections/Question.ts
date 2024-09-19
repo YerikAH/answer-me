@@ -90,7 +90,19 @@ const Questions: CollectionConfig = {
         { label: "Respondida", value: "respondida" },
         { label: "Cerrada", value: "cerrada" },
       ],
+      defaultValue: () => {
+        return "pendiente";
+      },
       required: true,
+      access: {
+        read: () => true,
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+      },
     },
     {
       name: "createdAt",
@@ -105,9 +117,14 @@ const Questions: CollectionConfig = {
       name: "response",
       type: "textarea",
       label: "Respuesta del abogado",
-      admin: {
-        condition: (data) =>
-          data.status === "respondida" || data.status === "cerrada",
+      access: {
+        read: () => true,
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
       },
     },
   ],

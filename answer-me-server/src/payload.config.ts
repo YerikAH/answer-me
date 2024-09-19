@@ -11,11 +11,28 @@ import Lawyers from "./collections/Lawyers";
 import Cases from "./collections/Cases";
 import Questions from "./collections/Question";
 import Media from "./collections/Media";
+import es from "./translations/es.json";
+import { CustomLogo, CustomLogoFull } from "./components";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    components: {
+      graphics: {
+        Logo: CustomLogoFull,
+        Icon: CustomLogo,
+      },
+    },
+  },
+  i18n: {
+    resources: {
+      es: {
+        translation: es,
+      },
+    },
+    fallbackLng: "en",
+    lng: "es",
   },
   editor: slateEditor({}),
   collections: [Users, Lawyers, Cases, Questions, Media],

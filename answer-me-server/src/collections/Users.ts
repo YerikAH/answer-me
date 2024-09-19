@@ -17,13 +17,14 @@ const Users: CollectionConfig = {
     read: ({ req: { user } }) => {
       if (user) {
         if (user.role === "administrador" || user.role === "abogado") {
-          console.log("Es admin o abogado");
           return true;
         }
         if (user.role === "usuario") {
           console.log("Es user", user);
           return {
-            _id: user.id,
+            id: {
+              equals: user.id,
+            },
           };
         }
       }

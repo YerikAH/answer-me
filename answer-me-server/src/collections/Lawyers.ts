@@ -20,10 +20,14 @@ const Lawyers: CollectionConfig = {
       if (user) {
         if (user.role === "administrador") {
           return true;
+        } else if (user.role === "abogado") {
+          console.log(user);
+          return {
+            id: {
+              equals: user.associatedLawyer.id,
+            },
+          };
         }
-        return {
-          id: user.id,
-        };
       }
       return false;
     },

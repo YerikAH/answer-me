@@ -20,7 +20,7 @@ export const ListUsersSimple = ({ people }: Props) => {
         <Link
           to={person.href}
           key={person.email}
-          className="relative flex justify-between py-5 hover:bg-zinc-200 transition-all"
+          className="relative flex justify-between py-5 hover:bg-slate-50 transition-all"
         >
           <div className="flex gap-x-4 pr-6 sm:w-1/2 sm:flex-none">
             <img

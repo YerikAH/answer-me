@@ -22,7 +22,7 @@ const Media: CollectionConfig = {
     read: () => true,
   },
   upload: {
-    disableLocalStorage: true,
+    disableLocalStorage: false,
     staticURL: "/media",
     staticDir: "media",
     mimeTypes: ["image/*", "video/*", "application/pdf"],

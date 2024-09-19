@@ -9,9 +9,9 @@ const Cases: CollectionConfig = {
     plural: "Casos",
     singular: "Caso",
   },
+
   access: {
     create: ({ req: { user } }) => {
-      if (!user) return false;
       return user.role === "usuario";
     },
     read: ({ req: { user } }) => {
@@ -19,15 +19,14 @@ const Cases: CollectionConfig = {
         return true;
       }
       return {
-        createdBy: {
+        user: {
           equals: user.id,
         },
       };
     },
-    update: ({ req: { user }, data }) => {
-      if (user.role === "administrador") return true;
-      if (user.role === "abogado") {
-        return !data.assignedLawyer || data.assignedLawyer === user.id;
+    update: ({ req: { user } }) => {
+      if (user.role === "abogado" || user.role === "administrador") {
+        return true;
       }
       return false;
     },
@@ -67,12 +66,28 @@ const Cases: CollectionConfig = {
         { label: "Resuelto", value: "resuelto" },
       ],
       required: true,
+      defaultValue: () => {
+        return "pendiente";
+      },
+      access: {
+        read: () => true,
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+      },
     },
     {
       name: "createdAt",
       type: "date",
       label: "Fecha de creación del caso",
       required: true,
+      admin: {
+        readOnly: true,
+      },
+      defaultValue: () => new Date().toISOString(),
     },
     {
       name: "deadline",
@@ -97,20 +112,6 @@ const Cases: CollectionConfig = {
       },
     },
     {
-      name: "assignedUser",
-      type: "relationship",
-      relationTo: "users",
-      label: "Usuario asignado",
-      access: {
-        create: () => false,
-        read: () => true,
-        update: () => false,
-      },
-      defaultValue: ({ user }) => {
-        return user?.id;
-      },
-    },
-    {
       name: "documents",
       type: "upload",
       relationTo: "media",
@@ -121,11 +122,44 @@ const Cases: CollectionConfig = {
       name: "lawyerNotes",
       type: "textarea",
       label: "Notas del abogado",
+      access: {
+        read: () => true,
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+      },
     },
     {
       name: "resolution",
       type: "textarea",
       label: "Resolución",
+      access: {
+        read: () => true,
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador" || user?.role === "abogado";
+        },
+      },
+    },
+    {
+      name: "user",
+      type: "relationship",
+      relationTo: "users",
+      label: "Usuario que que creo que caso",
+      required: true,
+      access: {
+        create: () => false,
+        read: () => true,
+        update: () => false,
+      },
+      defaultValue: ({ user }) => {
+        return user?.id;
+      },
     },
   ],
 };
