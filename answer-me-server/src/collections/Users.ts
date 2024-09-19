@@ -60,6 +60,15 @@ const Users: CollectionConfig = {
         { label: "Administrador", value: "administrador" },
       ],
       required: true,
+      access: {
+        create: ({ req: { user } }) => {
+          return user?.role === "administrador";
+        },
+        update: ({ req: { user } }) => {
+          return user?.role === "administrador";
+        },
+        read: () => true,
+      },
     },
     {
       name: "associatedLawyer",
