@@ -14,11 +14,11 @@ export const Stats = ({ stats }: Props) => {
           key={stat.name}
           className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 py-6  border-t max-w-56 w-full"
         >
-          <dt className="text-sm font-medium leading-6 text-gray-500">
+          <dt className="text-sm font-medium leading-6 text-zinc-500">
             {stat.name}
           </dt>
 
-          <dd className="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
+          <dd className="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-zinc-900">
             {stat.value}
           </dd>
 
@@ -26,8 +26,8 @@ export const Stats = ({ stats }: Props) => {
             <span
               className={`${
                 stat.changeType === "negative"
-                  ? "bg-red-500/15 text-red-500"
-                  : "bg-green-500/15 text-green-500"
+                  ? "bg-red-500/10 text-red-500"
+                  : "bg-emerald-500/10 text-emerald-500"
               } rounded-md px-2 py-1 text-xs font-semibold`}
             >
               +4.5%

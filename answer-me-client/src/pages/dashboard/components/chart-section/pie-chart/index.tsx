@@ -4,7 +4,7 @@ import ApexCharts from "apexcharts";
 const getChartOptions = () => {
   return {
     series: [52.8, 26.8, 20.4],
-    colors: ["#d4d4d8", "#3f3f46", "#18181b"],
+    colors: ["#e2e8f0", "#94a3b8", "#334155"],
     chart: {
       height: 350,
       width: "100%",

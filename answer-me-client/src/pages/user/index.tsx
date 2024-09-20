@@ -190,8 +190,6 @@ export default function User() {
     <div className="mx-auto max-w-6xl w-full mt-12">
       <GoBack name="Usuarios" route={ROUTES.USERS} />
       <UserDetailCard />
-      <SectionHeader icon={ArrowTrendingUpIcon} title="Actividad" />
-      <Stats stats={stats} />
       <SectionHeader icon={TableCellsIcon} title="Casos del usuario" />
       <Table
         data={people}

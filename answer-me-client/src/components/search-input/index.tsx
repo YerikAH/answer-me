@@ -6,7 +6,7 @@ export const SearchInput = () => {
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <MagnifyingGlassIcon
           aria-hidden="true"
-          className="h-5 w-5 text-slate-500"
+          className="h-5 w-5 text-zinc-500"
         />
       </div>
       <input
@@ -14,7 +14,7 @@ export const SearchInput = () => {
         name="text"
         type="text"
         placeholder="Buscar..."
-        className="block w-full bg-white rounded-lg border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+        className="block w-full bg-white rounded-lg border-0 py-1.5 pl-10 text-zinc-900 ring-1 ring-inset ring-zinc-300 placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
       />
     </div>
   );

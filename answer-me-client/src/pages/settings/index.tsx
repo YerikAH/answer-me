@@ -11,7 +11,7 @@ export default function Settings() {
     <form className="w-full max-w-4xl mx-auto mt-12 h-auto min-h-[100%]">
       <div className="space-y-12 sm:space-y-16">
         <div>
-          <h2 className="text-xl font-semibold leading-7 text-slate-900">
+          <h2 className="text-xl font-semibold leading-7 text-zinc-900">
             Configuración
           </h2>
 
@@ -25,7 +25,7 @@ export default function Settings() {
                   >
                     Nombre completo
                   </label>
-                  <p className="text-slate-500 text-sm mt-2">
+                  <p className="text-zinc-500 text-sm mt-2">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Ipsa, eius.
                   </p>
@@ -38,7 +38,7 @@ export default function Settings() {
                     type="text"
                     autoComplete="username"
                     placeholder="Ej. John Doe"
-                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-500  focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500  focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function Settings() {
                   >
                     Tu biografía
                   </label>
-                  <p className="text-slate-500 text-sm mt-2">
+                  <p className="text-zinc-500 text-sm mt-2">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Fugit quidem tempora sed quis maxime facere consequatur.
                   </p>
@@ -62,7 +62,7 @@ export default function Settings() {
                     name="about"
                     rows={3}
                     placeholder="Ej. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit quidem tempora sed quis maxime facere consequatur."
-                    className="block w-full max-w-2xl rounded-lg border-0 bg-white py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                    className="block w-full max-w-2xl rounded-lg border-0 bg-white py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     defaultValue={""}
                   />
                 </div>
@@ -78,7 +78,7 @@ export default function Settings() {
                   >
                     Correo elétronico
                   </label>
-                  <p className="text-slate-500 text-sm mt-2">
+                  <p className="text-zinc-500 text-sm mt-2">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Doloribus saepe labore magni repudiandae impedit nemo.
                   </p>
@@ -91,7 +91,7 @@ export default function Settings() {
                     type="text"
                     autoComplete="username"
                     placeholder="Ej. john@example.com"
-                    className="block w-full rounded-lg border-0 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-500  focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-lg border-0 py-1.5 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500  focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Settings() {
                   >
                     Número de DNI
                   </label>
-                  <p className="text-slate-500 text-sm mt-2">
+                  <p className="text-zinc-500 text-sm mt-2">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Cupiditate dignissimos magni.
                   </p>
@@ -117,7 +117,7 @@ export default function Settings() {
                     type="text"
                     autoComplete="username"
                     placeholder="Ej. 12345678"
-                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function Settings() {
                   >
                     Número de celular
                   </label>
-                  <p className="text-slate-500 text-sm mt-2">
+                  <p className="text-zinc-500 text-sm mt-2">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Ipsa, eius.
                   </p>
@@ -143,7 +143,7 @@ export default function Settings() {
                     type="text"
                     autoComplete="username"
                     placeholder="+51 123456789"
-                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-lg border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function Settings() {
                 >
                   Fotografía profesional
                 </label>
-                <p className="text-slate-500 text-sm mt-2">
+                <p className="text-zinc-500 text-sm mt-2">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Fugit quidem tempora sed quis maxime facere consequatur.
                 </p>
@@ -184,13 +184,13 @@ export default function Settings() {
       <div className="mt-6 flex items-center justify-end gap-x-4">
         <button
           type="button"
-          className="text-sm font-semibold leading-6 text-gray-900 py-2.5 px-6 bg-slate-50 hover:bg-slate-200 transition-all rounded-lg"
+          className="text-sm font-semibold leading-6 text-gray-900 py-2.5 px-6 bg-zinc-50 hover:bg-zinc-200 transition-all rounded-lg"
         >
           Cancelar
         </button>
         <button
           type="submit"
-          className="inline-flex justify-center rounded-lg bg-slate-900 px-6 transition-all py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+          className="inline-flex justify-center rounded-lg bg-zinc-900 px-6 transition-all py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
         >
           Guardar cambios
         </button>

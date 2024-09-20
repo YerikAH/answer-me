@@ -17,7 +17,7 @@ export const UserDetailCard = () => {
                 Vasquez Harvey
               </h1>
               <span
-                className={`font-medium px-2 py-[2px] text-xs  border rounded-md capitalize ${getCategoryStyles(
+                className={`font-medium px-2 py-[2px] text-xs  rounded-md capitalize ${getCategoryStyles(
                   "silver"
                 )}`}
               >

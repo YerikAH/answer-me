@@ -15,27 +15,27 @@ interface Props {
 
 export const ListUsersSimple = ({ people }: Props) => {
   return (
-    <ul role="list" className="divide-y divide-gray-100 mt-8">
+    <ul role="list" className="divide-y divide-zinc-100 mt-8">
       {people.map((person) => (
         <Link
           to={person.href}
           key={person.email}
-          className="relative flex justify-between py-5 hover:bg-slate-50 transition-all"
+          className="relative flex justify-between py-5 hover:bg-zinc-50 transition-all"
         >
           <div className="flex gap-x-4 pr-6 sm:w-1/2 sm:flex-none">
             <img
               alt=""
               src={person.imageUrl}
-              className="h-12 w-12 flex-none rounded-full bg-gray-50"
+              className="h-12 w-12 flex-none rounded-full bg-zinc-50"
             />
             <div className="min-w-0 flex-auto">
-              <p className="text-sm font-semibold leading-6 text-gray-900">
+              <p className="text-sm font-semibold leading-6 text-zinc-900">
                 <Link to={person.href}>
                   <span className="absolute inset-x-0 -top-px bottom-0" />
                   {person.name}
                 </Link>
               </p>
-              <p className="mt-1 flex text-xs leading-5 text-gray-500">
+              <p className="mt-1 flex text-xs leading-5 text-zinc-500">
                 <a
                   href={`mailto:${person.email}`}
                   className="relative truncate hover:underline"
@@ -47,9 +47,9 @@ export const ListUsersSimple = ({ people }: Props) => {
           </div>
           <div className="flex items-center justify-between gap-x-4 sm:w-1/2 sm:flex-none">
             <div className="hidden sm:block">
-              <p className="text-sm leading-6 text-gray-900">{person.role}</p>
+              <p className="text-sm leading-6 text-zinc-900">{person.role}</p>
               <span
-                className={`bg-amber-100 text-amber-500 font-medium px-2 py-[2px] text-xs border-amber-200 border rounded-md capitalize ${getCategoryStyles(
+                className={` font-medium px-2 py-[2px] text-xs rounded-md capitalize ${getCategoryStyles(
                   person.category
                 )}`}
               >
@@ -58,7 +58,7 @@ export const ListUsersSimple = ({ people }: Props) => {
             </div>
             <ChevronRightIcon
               aria-hidden="true"
-              className="h-5 w-5 flex-none text-gray-400"
+              className="h-5 w-5 flex-none text-zinc-400"
             />
           </div>
         </Link>

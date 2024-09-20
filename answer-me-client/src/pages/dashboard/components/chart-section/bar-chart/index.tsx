@@ -2,11 +2,11 @@ import ApexCharts from "apexcharts";
 import { useEffect } from "react";
 
 const options = {
-  colors: ["#09090b"],
+  colors: ["#1e293b"],
   series: [
     {
       name: "Organic",
-      color: "#09090b",
+      color: "#1e293b",
       data: [
         { x: "Ene", y: 301 },
         { x: "Feb", y: 222 },
@@ -36,7 +36,7 @@ const options = {
     normal: {
       filter: {
         type: "lighten",
-        value: 0.5,
+        value: 0.6,
       },
     },
     hover: {
