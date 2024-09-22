@@ -1,3 +1,6 @@
+import { FetchResult } from "@/types";
+import { Bounce, toast } from "react-toastify";
+
 export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -52,5 +55,52 @@ export function getCategoryStyles(category: string) {
       return "bg-green-100 text-green-500 border-green-200";
     default:
       return "bg-blue-100 text-blue-500 border-blue-200";
+  }
+}
+
+type ErrorMessages = {
+  [key: number]: string;
+};
+export const errorMessages: ErrorMessages = {
+  0: "Sucedio un error desconocido.",
+  400: "Hubo un problema con la solicitud. Por favor, verifica los datos enviados y vuelve a intentarlo.",
+  401: "No tienes autorización para acceder a este recurso. Por favor, inicia sesión y vuelve a intentarlo.",
+  403: "No tienes permiso para realizar esta acción. Si crees que esto es un error, contacta al administrador.",
+  404: "No pudimos encontrar el recurso que estabas buscando. Es posible que haya sido movido o eliminado.",
+  500: "Ocurrió un error en nuestro servidor. Estamos trabajando para solucionarlo lo antes posible. Por favor, intenta nuevamente más tarde.",
+};
+
+export function getErrorMessage(status: number) {
+  return (
+    errorMessages[status] ||
+    "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
+  );
+}
+
+export function handleFetchResponse(res: FetchResult, successMessage?: string) {
+  if (res.error.error && !res.loader) {
+    toast.error(getErrorMessage(res.error.status), {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  } else if (!res.error.error && !res.loader && res.data !== null) {
+    toast.success(successMessage || "Operación exitosa.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   }
 }

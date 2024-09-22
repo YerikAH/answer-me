@@ -47,7 +47,7 @@ export const SidebarMobile = ({
       <div className="fixed inset-0 flex p-2">
         <DialogPanel
           transition
-          className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-translate-x-full"
+          className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-[closed]:-tranzinc-x-full"
         >
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white border rounded-lg pb-4 ring-1 ring-white/10">
             <div>

@@ -1,3 +1,4 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
 
 const Questions: CollectionConfig = {
@@ -10,8 +11,20 @@ const Questions: CollectionConfig = {
     singular: "Consulta",
   },
   access: {
-    create: ({ req: { user } }) => {
-      return user.role === "usuario";
+    create: async ({ req: { user } }) => {
+      if (user.associatedCustomer.plan === "basico") {
+        const existingQuestions = await payload.find({
+          collection: "questions",
+        });
+        const questionUser = existingQuestions.docs.filter(
+          (item) => item.user.id === user.id
+        )?.length;
+        if (questionUser >= 4) return false;
+      }
+
+      return (
+        user.role === "usuario" && user.associatedCustomer.plan !== "basico"
+      );
     },
     read: ({ req: { user } }) => {
       if (user.role === "administrador" || user.role === "abogado") {

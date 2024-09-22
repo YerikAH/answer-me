@@ -1,8 +1,10 @@
-import { Table } from "@/components";
+import { Pagination, Table } from "@/components";
 import { TableOptions } from "./components/table-options";
-import { Pagination } from "./components/pagination";
 import { useEffect } from "react";
 import { useTitle } from "@/hooks";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/router/routes";
 
 const people = [
   {
@@ -154,9 +156,18 @@ export default function Cases() {
   }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
-      <h2 className="text-xl font-semibold leading-7 text-zinc-900">
-        Casos registrados
-      </h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-semibold leading-7 text-zinc-900">
+          Casos registrados
+        </h2>
+        <Link
+          to={ROUTES.CREATE_CASE}
+          className="inline-flex items-center gap-2 justify-center rounded-lg bg-zinc-900 px-6 transition-all py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        >
+          <PlusIcon className="size-3.5" strokeWidth={3} />
+          Crear caso
+        </Link>
+      </div>
       <TableOptions />
       <div className="mt-8">
         <Table

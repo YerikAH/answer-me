@@ -12,6 +12,7 @@ import {
   SparklesIcon,
   BriefcaseIcon,
   FolderIcon,
+  ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/20/solid";
 import { ROUTES } from "@/router/routes";
 
@@ -26,6 +27,12 @@ const navigation = [
     name: "Casos",
     href: ROUTES.CASES,
     icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: "Consultas",
+    href: ROUTES.QUESTIONS,
+    icon: ChatBubbleBottomCenterTextIcon,
     current: false,
   },
   {
@@ -93,7 +100,7 @@ export const Sidebar = () => {
       <div className="lg:pl-60">
         <Navigation setSidebarOpen={setSidebarOpen} />
 
-        <main className="p-[5px] bg-slate-50 h-screen w-full ">
+        <main className="p-[5px] bg-zinc-50 h-screen w-full ">
           <div className="px-4 sm:px-6 lg:px-8 rounded-lg border bg-white flex flex-col min-h-[calc(100vh-10px)]">
             <Outlet />
           </div>

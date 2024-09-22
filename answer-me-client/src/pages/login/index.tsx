@@ -5,35 +5,54 @@ import { EyeSlashIcon } from "@heroicons/react/20/solid";
 import { EyeIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/router/routes";
-import { useTitle } from "@/hooks";
+import { useFetch, useTitle } from "@/hooks";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { login } from "@/services";
+import { Bounce, ToastContainer } from "react-toastify";
+import { Loader } from "@/components";
+import { handleFetchResponse } from "@/utils";
 
 const carousel = [
   {
-    image: "https://images.pexels.com/photos/3965548/pexels-photo-3965548.jpeg",
+    image: "https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat rerum ea molestiae excepturi deserunt, explicabo in. Repellat maiores sunt at. Earum incidunt id sed optio mollitia odio placeat obcaecati.",
+      "La app ha transformado mi forma de trabajar. Puedo gestionar casos y consultas de mis clientes en un solo lugar. ¡Una herramienta imprescindible para mi práctica!",
     label: "Alexander Alex",
     label2: "Founder Luxpace",
   },
   {
-    image: "https://images.pexels.com/photos/5424945/pexels-photo-5424945.jpeg",
+    image:
+      "https://images.pexels.com/photos/16927556/pexels-photo-16927556/free-photo-of-estatua-de-marmol-de-la-igualdad.jpeg",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat rerum ea molestiae excepturi deserunt, explicabo in. Repellat maiores sunt at. Earum incidunt id sed optio mollitia odio placeat obcaecati.",
+      "Excelente plataforma para mantenerme organizado. Responder consultas y actualizar casos es rápido y eficiente. Mis clientes están más satisfechos y yo también.",
     label: "Alexander Alex",
     label2: "Founder Luxpace",
   },
   {
-    image: "https://images.pexels.com/photos/8311890/pexels-photo-8311890.jpeg",
+    image: "https://images.pexels.com/photos/4427501/pexels-photo-4427501.jpeg",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat rerum ea molestiae excepturi deserunt, explicabo in. Repellat maiores sunt at. Earum incidunt id sed optio mollitia odio placeat obcaecati.",
+      "Me encanta esta app. Facilita la comunicación con mis clientes y me permite resolver todo de manera ágil. Ahora puedo enfocarme en lo que realmente importa: defender sus intereses.",
     label: "Alexander Alex",
     label2: "Founder Luxpace",
   },
 ];
+
+interface LoginForm {
+  email: string;
+  password: string;
+}
 export default function Login() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const { changeTitle } = useTitle();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>();
+
+  const { data, error, fetchData, loader } = useFetch(login);
+  const onSubmit: SubmitHandler<LoginForm> = (data) => fetchData(data);
 
   const handleNext = () => {
     if (currentSlide === carousel.length - 1) {
@@ -57,6 +76,10 @@ export default function Login() {
     changeTitle("Ingresar -  Arxatec");
   }, []);
 
+  useEffect(() => {
+    handleFetchResponse({ data, error, loader });
+  }, [data, error, loader]);
+
   return (
     <main className="h-screen w-full grid lg:grid-cols-[50%_50%]  mx-auto">
       <div className="relative w-full   h-[500px] lg:h-full overflow-hidden flex flex-nowrap">
@@ -69,7 +92,7 @@ export default function Login() {
           >
             <div className="relative items-end justify-end flex w-full">
               <div
-                className="absolute w-full h-full bg-cover bg-no-repeat bg-fixed"
+                className="absolute w-full h-full bg-cover bg-no-repeat bg-center"
                 style={{ backgroundImage: `url(${item.image})` }}
               />
               <div className="absolute w-full h-full bg-[#0005] left-0 z-10" />
@@ -110,12 +133,15 @@ export default function Login() {
           </div>
         ))}
       </div>
-      <div className=" h-full w-full px-8 pt-16 pb-8 lg:pt-24 max-w-[36rem] flex flex-col">
+      <form
+        className=" h-full w-full px-8 pt-16 pb-8 lg:pt-24 max-w-[36rem] flex flex-col"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h2 className="text-3xl font-bold tracking-tighter text-zinc-950">
           Hola, Bienvenido de nuevo
         </h2>
         <p className="text-sm text-zinc-500 mt-4">
-          Complete the data below to enjoy our services
+          ¡Bienvenido de nuevo! Ingresa para acceder a tus casos y consultas.
         </p>
 
         <div className="mt-24">
@@ -123,19 +149,29 @@ export default function Login() {
             htmlFor="email"
             className="text-sm text-zinc-900 font-semibold"
           >
-            Ingresar tu correo eletrónico:
+            Ingresar tu correo electrónico:
           </label>
           <input
             type="text"
             id="email"
             placeholder="Ej. usuario@dominio.com"
-            className="block rounded-lg border-0 px-4 py-2 w-full mt-2 text-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-900"
+            className="block rounded-lg border-0 px-4 py-2 w-full mt-2 text-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            {...register("email", {
+              required: "El correo electrónico es un campo requerido.",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "El correo electrónico no es valido.",
+              },
+            })}
           />
         </div>
+        {errors.email && (
+          <span className="text-xs text-red-500">{errors.email.message}</span>
+        )}
 
         <div className="mt-6">
           <label
-            htmlFor="email"
+            htmlFor="password"
             className="text-sm text-zinc-900 font-semibold"
           >
             Ingresar tu contraseña:
@@ -143,9 +179,22 @@ export default function Login() {
           <div className="relative">
             <input
               type={showPassword ? "password" : "text"}
-              id="email"
+              id="password"
               placeholder="Ej. 123ABC$#%GawC"
-              className="block rounded-lg border-0 px-4 py-2 w-full mt-2 text-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-900"
+              className="block rounded-lg border-0 px-4 py-2 w-full mt-2 text-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              {...register("password", {
+                required: "La contraseña es un campo requerido.",
+                // minLength: {
+                //   value: 8,
+                //   message:
+                //     "La contraseña debe de tener como minimo 8 caracteres.",
+                // },
+                // pattern: {
+                //   value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+                //   message:
+                //     "La contraseña debe contener al menos una letra y un número.",
+                // },
+              })}
             />
 
             <button
@@ -159,6 +208,11 @@ export default function Login() {
               )}
             </button>
           </div>
+          {errors.password && (
+            <span className="text-xs text-red-500">
+              {errors.password.message}
+            </span>
+          )}
         </div>
 
         <div className="flex items-center justify-between mt-8">
@@ -167,13 +221,13 @@ export default function Login() {
               id="remember-me"
               name="remember-me"
               type="checkbox"
-              className="h-4 w-4 rounded-full border-gray-300 text-zinc-900 focus:ring-zinc-900"
+              className="h-4 w-4 rounded-md border-gray-300 text-zinc-900 focus:ring-zinc-900"
             />
             <label
               htmlFor="remember-me"
               className="ml-3 block text-sm leading-6 text-gray-700"
             >
-              Remember me
+              Recuérdame
             </label>
           </div>
 
@@ -182,19 +236,23 @@ export default function Login() {
               href="#"
               className="font-semibold text-zinc-950 hover:text-zinc-950"
             >
-              Forgot password?
+              ¿Olvidaste tu contraseña?
             </a>
           </div>
         </div>
 
         <div className="flex w-full gap-8 mt-12 mb-24">
-          <button className="text-white bg-zinc-950 rounded-lg py-3 px-6 block w-full text-sm hover:bg-zinc-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900">
+          <button
+            type="submit"
+            className="text-white flex items-center justify-center gap-2 bg-zinc-950 rounded-lg py-3 px-6 w-full text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 transition-all hover:bg-zinc-700"
+          >
+            {loader && <Loader color="#fff" size="sm" />}
             Ingresar
           </button>
-          <button className="text-zinc-950 border-zinc-200 border rounded-lg px-6 py-3 w-full text-sm hover:bg-zinc-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 flex items-center justify-center">
+          {/* <button  className="text-zinc-950 border-zinc-200 border rounded-lg px-6 py-3 w-full text-sm hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 flex items-center justify-center transition-all">
             <img src={google} alt="google" className="size-4 mr-2" />
             Ingresar con Google
-          </button>
+          </button> */}
         </div>
 
         <div className="flex gap-2 mt-auto">
@@ -206,7 +264,21 @@ export default function Login() {
             Crea una cuenta
           </Link>
         </div>
-      </div>
+
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
+      </form>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+export { Loader } from "./loader";
+export { Pagination } from "./pagination";
 export { SectionHeader } from "./section-header";
 export { UserDetailCard } from "./user-detail-card";
 export { GoBack } from "./go-back";

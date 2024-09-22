@@ -11,6 +11,7 @@ import Lawyers from "./collections/Lawyers";
 import Cases from "./collections/Cases";
 import Questions from "./collections/Question";
 import Media from "./collections/Media";
+import Customer from "./collections/Customer";
 import es from "./translations/es.json";
 import { CustomLogo, CustomLogoFull } from "./components";
 import swagger from "payload-swagger";
@@ -36,7 +37,7 @@ export default buildConfig({
     lng: "es",
   },
   editor: slateEditor({}),
-  collections: [Users, Lawyers, Cases, Questions, Media],
+  collections: [Users, Lawyers, Cases, Questions, Media, Customer],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

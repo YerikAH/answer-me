@@ -1,0 +1,62 @@
+[
+  {
+    "id": "66f02ecc3f295c74f4138a1b",
+    "createdAt": "2024-09-22T14:50:45.255Z",
+    "caseID": "12",
+    "description": "fdfsdadfsa",
+    "caseType": "civil",
+    "status": "pendiente",
+    "deadline": "2024-09-12T12:00:00.000Z",
+    "user": {
+      "id": "66f02b9235b1a6b0c305f9ff",
+      "role": "usuario",
+      "associatedCustomer": {
+        "id": "66f02b8635b1a6b0c305f9ed",
+        "fullName": "Jorge De la Cruz",
+        "email": "jorge@gmail.com",
+        "phoneNumber": "967523180",
+        "address": "Lima, Perú",
+        "payMethod": "paypal",
+        "plan": "basico",
+        "createdAt": "2024-09-22T14:36:54.149Z",
+        "updatedAt": "2024-09-22T14:36:54.149Z"
+      },
+      "active": true,
+      "email": "jorge@gmail.com",
+      "createdAt": "2024-09-22T14:37:06.316Z",
+      "updatedAt": "2024-09-22T14:37:06.316Z",
+      "loginAttempts": 0
+    },
+    "updatedAt": "2024-09-22T14:50:45.255Z"
+  },
+  {
+    "id": "66f02c4e148aa3b25e7624a9",
+    "createdAt": "2024-09-22T14:39:48.416Z",
+    "caseID": "09",
+    "description": "Violación",
+    "caseType": "civil",
+    "status": "pendiente",
+    "deadline": "2024-09-13T12:00:00.000Z",
+    "user": {
+      "id": "66f02b9235b1a6b0c305f9ff",
+      "role": "usuario",
+      "associatedCustomer": {
+        "id": "66f02b8635b1a6b0c305f9ed",
+        "fullName": "Jorge De la Cruz",
+        "email": "jorge@gmail.com",
+        "phoneNumber": "967523180",
+        "address": "Lima, Perú",
+        "payMethod": "paypal",
+        "plan": "basico",
+        "createdAt": "2024-09-22T14:36:54.149Z",
+        "updatedAt": "2024-09-22T14:36:54.149Z"
+      },
+      "active": true,
+      "email": "jorge@gmail.com",
+      "createdAt": "2024-09-22T14:37:06.316Z",
+      "updatedAt": "2024-09-22T14:37:06.316Z",
+      "loginAttempts": 0
+    },
+    "updatedAt": "2024-09-22T14:39:48.416Z"
+  }
+]

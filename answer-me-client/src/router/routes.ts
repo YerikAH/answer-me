@@ -11,4 +11,7 @@ export enum ROUTES {
   USER = "/usuarios/:id",
   LAWYERS = "/abogados",
   LAWYER = "/abogados/:id",
+  CREATE_CASE = "/crear-caso",
+  QUESTIONS = "/consultas",
+  CREATE_QUESTION = "/crear-consulta",
 }

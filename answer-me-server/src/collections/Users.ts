@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload/types";
+import CustomAdminError from "../utils/errorClasses";
 
 const Users: CollectionConfig = {
   slug: "users",
@@ -12,6 +13,19 @@ const Users: CollectionConfig = {
   },
   admin: {
     useAsTitle: "email",
+  },
+  hooks: {
+    beforeLogin: [
+      async ({ user, req }) => {
+        if (!user.active) {
+          throw new CustomAdminError(
+            `Tu cuenta esta deshabilitada, consulte con el administrador.`,
+            403
+          );
+        }
+        return user;
+      },
+    ],
   },
   access: {
     read: ({ req: { user } }) => {
@@ -78,6 +92,22 @@ const Users: CollectionConfig = {
       admin: {
         condition: (data) => data.role === "abogado",
       },
+    },
+    {
+      name: "associatedCustomer",
+      type: "relationship",
+      relationTo: "customer",
+      label: "Cliente asociado",
+      admin: {
+        condition: (data) => data.role === "usuario",
+      },
+    },
+    {
+      name: "active",
+      type: "checkbox",
+      defaultValue: true,
+      label: "Activo",
+      required: true,
     },
   ],
 };

@@ -4,12 +4,15 @@ import { Sidebar } from "@/layout";
 import {
   Case,
   Cases,
+  CreateCase,
+  CreateQuestion,
   Dashboard,
   Home,
   Lawyer,
   Lawyers,
   Login,
   NotFound,
+  Questions,
   Register,
   Settings,
   User,
@@ -68,6 +71,18 @@ const router = [
       {
         element: <Lawyer />,
         path: ROUTES.LAWYER,
+      },
+      {
+        element: <CreateCase />,
+        path: ROUTES.CREATE_CASE,
+      },
+      {
+        element: <Questions />,
+        path: ROUTES.QUESTIONS,
+      },
+      {
+        element: <CreateQuestion />,
+        path: ROUTES.CREATE_QUESTION,
       },
     ],
   },

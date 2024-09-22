@@ -1,3 +1,4 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
 
 const Cases: CollectionConfig = {
@@ -9,10 +10,22 @@ const Cases: CollectionConfig = {
     plural: "Casos",
     singular: "Caso",
   },
-
   access: {
-    create: ({ req: { user } }) => {
-      return user.role === "usuario";
+    create: async ({ req: { user }, data }) => {
+      if (user.associatedCustomer?.plan === "basico") {
+        console.log("Es basico");
+        const existingCases = await payload.find({
+          collection: "cases",
+        });
+        const casesUser = existingCases.docs.filter(
+          (item) => item.user.id === user.id
+        )?.length;
+        if (casesUser >= 1) return false;
+      }
+
+      return (
+        user.role === "usuario" && user.associatedCustomer.plan !== "basico"
+      );
     },
     read: ({ req: { user } }) => {
       if (user.role === "administrador" || user.role === "abogado") {
