@@ -9,7 +9,7 @@ const Users: CollectionConfig = {
   },
   auth: {
     maxLoginAttempts: 5,
-    lockTime: 600000,
+    lockTime: 1,
   },
   admin: {
     useAsTitle: "email",
@@ -55,12 +55,7 @@ const Users: CollectionConfig = {
       }
       return false;
     },
-    create: ({ req: { user } }) => {
-      if (user && user.role === "administrador") {
-        return true;
-      }
-      return false;
-    },
+    create: () => true,
     delete: () => false,
   },
   fields: [
@@ -89,6 +84,7 @@ const Users: CollectionConfig = {
       type: "relationship",
       relationTo: "lawyers",
       label: "Abogado asociado",
+      required: true,
       admin: {
         condition: (data) => data.role === "abogado",
       },
@@ -98,6 +94,7 @@ const Users: CollectionConfig = {
       type: "relationship",
       relationTo: "customer",
       label: "Cliente asociado",
+      required: false,
       admin: {
         condition: (data) => data.role === "usuario",
       },

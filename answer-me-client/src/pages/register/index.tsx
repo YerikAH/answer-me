@@ -53,7 +53,6 @@ export default function Register() {
   } = useForm<RegisterForm>();
 
   const { data, error, fetchData, loader } = useFetch(registerAccount);
-
   const onSubmit: SubmitHandler<RegisterForm> = (data) => fetchData(data);
 
   const handleNext = () => {

@@ -85,6 +85,7 @@ const teams = [
 
 export const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="">
       <SidebarMobile

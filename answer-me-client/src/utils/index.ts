@@ -64,10 +64,10 @@ type ErrorMessages = {
 export const errorMessages: ErrorMessages = {
   0: "Sucedio un error desconocido.",
   400: "Hubo un problema con la solicitud. Por favor, verifica los datos enviados y vuelve a intentarlo.",
-  401: "No tienes autorización para acceder a este recurso. Por favor, inicia sesión y vuelve a intentarlo.",
-  403: "No tienes permiso para realizar esta acción. Si crees que esto es un error, contacta al administrador.",
-  404: "No pudimos encontrar el recurso que estabas buscando. Es posible que haya sido movido o eliminado.",
-  500: "Ocurrió un error en nuestro servidor. Estamos trabajando para solucionarlo lo antes posible. Por favor, intenta nuevamente más tarde.",
+  401: "No tienes autorización para acceder a este recurso.",
+  403: "No tienes permiso para realizar esta acción.",
+  404: "No pudimos encontrar el recurso que estabas buscando.",
+  500: "Ocurrió un error en nuestro servidor.",
 };
 
 export function getErrorMessage(status: number) {
@@ -77,7 +77,12 @@ export function getErrorMessage(status: number) {
   );
 }
 
-export function handleFetchResponse(res: FetchResult, successMessage?: string) {
+export function handleFetchResponse(
+  res: FetchResult,
+  onSuccess?: () => void,
+  onFailure?: () => void,
+  successMessage?: string
+) {
   if (res.error.error && !res.loader) {
     toast.error(getErrorMessage(res.error.status), {
       position: "bottom-right",
@@ -90,7 +95,9 @@ export function handleFetchResponse(res: FetchResult, successMessage?: string) {
       theme: "light",
       transition: Bounce,
     });
+    onFailure && onFailure();
   } else if (!res.error.error && !res.loader && res.data !== null) {
+    onSuccess && onSuccess();
     toast.success(successMessage || "Operación exitosa.", {
       position: "bottom-right",
       autoClose: 5000,

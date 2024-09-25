@@ -3,7 +3,7 @@ import google from "@/assets/google-icon.png";
 import { useEffect, useState } from "react";
 import { EyeSlashIcon } from "@heroicons/react/20/solid";
 import { EyeIcon } from "@heroicons/react/20/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "@/router/routes";
 import { useFetch, useTitle } from "@/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -11,6 +11,7 @@ import { login } from "@/services";
 import { Bounce, ToastContainer } from "react-toastify";
 import { Loader } from "@/components";
 import { handleFetchResponse } from "@/utils";
+import { TOKEN } from "@/config";
 
 const carousel = [
   {
@@ -44,6 +45,8 @@ interface LoginForm {
 export default function Login() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
   const { changeTitle } = useTitle();
   const {
     register,
@@ -72,12 +75,17 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const onSuccess = () => {
+    localStorage.setItem(TOKEN, data.token);
+    navigate(ROUTES.DASHBOARD);
+  };
+
   useEffect(() => {
     changeTitle("Ingresar -  Arxatec");
   }, []);
 
   useEffect(() => {
-    handleFetchResponse({ data, error, loader });
+    handleFetchResponse({ data, error, loader }, onSuccess);
   }, [data, error, loader]);
 
   return (

@@ -12,7 +12,7 @@ const Questions: CollectionConfig = {
   },
   access: {
     create: async ({ req: { user } }) => {
-      if (user.associatedCustomer.plan === "basico") {
+      if (user.associatedCustomer?.plan === "basico") {
         const existingQuestions = await payload.find({
           collection: "questions",
         });
