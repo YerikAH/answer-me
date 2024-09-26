@@ -1,9 +1,8 @@
-import { GoBack } from "@/components";
+import { GoBack, IconLabel } from "@/components";
 import { ROUTES } from "@/router/routes";
 import { getCategoryStyles } from "@/utils";
 import { CaseDetails } from "./components/case-details";
 import { CalendarIcon } from "@heroicons/react/16/solid";
-import { IconLabel } from "./components/icon-label";
 import { BriefcaseIcon, CheckBadgeIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
 import { useTitle } from "@/hooks";

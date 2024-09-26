@@ -12,4 +12,5 @@ export { default as Lawyer } from "./lawyer";
 export { default as Home } from "./home";
 export { default as CreateCase } from "./create-case";
 export { default as Questions } from "./questions";
+export { default as Question } from "./question";
 export { default as CreateQuestion } from "./create-question";

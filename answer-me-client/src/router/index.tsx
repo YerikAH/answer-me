@@ -12,6 +12,7 @@ import {
   Lawyers,
   Login,
   NotFound,
+  Question,
   Questions,
   Register,
   Settings,
@@ -83,6 +84,10 @@ const router = [
       {
         element: <CreateQuestion />,
         path: ROUTES.CREATE_QUESTION,
+      },
+      {
+        element: <Question />,
+        path: ROUTES.QUESTION,
       },
     ],
   },

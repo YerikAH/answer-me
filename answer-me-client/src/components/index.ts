@@ -1,3 +1,4 @@
+export { IconLabel } from "./icon-label";
 export { Loader } from "./loader";
 export { Pagination } from "./pagination";
 export { SectionHeader } from "./section-header";
