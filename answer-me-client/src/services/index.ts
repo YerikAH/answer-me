@@ -6,7 +6,7 @@ interface LoginParams {
   email: string;
   password: string;
 }
-
+// one change
 interface RegisterParams {
   name: string;
   lastName: string;
