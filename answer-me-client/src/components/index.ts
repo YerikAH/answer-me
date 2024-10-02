@@ -1,3 +1,5 @@
+export { DataHandler } from "./data-handler";
+export { ContainerError } from "./container-error";
 export { IconLabel } from "./icon-label";
 export { Loader } from "./loader";
 export { Pagination } from "./pagination";

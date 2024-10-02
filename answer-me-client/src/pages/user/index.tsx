@@ -1,42 +1,8 @@
-import {
-  GoBack,
-  SectionHeader,
-  Stats,
-  Table,
-  UserDetailCard,
-} from "@/components";
+import { GoBack, SectionHeader, Table, UserDetailCard } from "@/components";
 import { useTitle } from "@/hooks";
 import { ROUTES } from "@/router/routes";
 import { TableCellsIcon } from "@heroicons/react/16/solid";
-import { ArrowTrendingUpIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
-
-const stats = [
-  {
-    name: "Revenue",
-    value: "$405,091.00",
-    change: "+4.75%",
-    changeType: "positive",
-  },
-  {
-    name: "Overdue invoices",
-    value: "$12,787.00",
-    change: "+54.02%",
-    changeType: "negative",
-  },
-  {
-    name: "Outstanding invoices",
-    value: "$245,988.00",
-    change: "-1.39%",
-    changeType: "positive",
-  },
-  {
-    name: "Outstanding invoices",
-    value: "$245,988.00",
-    change: "-1.39%",
-    changeType: "positive",
-  },
-];
 
 const people = [
   {

@@ -111,3 +111,29 @@ export function handleFetchResponse(
     });
   }
 }
+
+export function formatCase(item: any) {
+  return {
+    id: item.caseID,
+    date: new Date(item.createdAt).toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }),
+    case: item.description,
+    fullName: item.user.associatedCustomer.fullName,
+    type: item.caseType.charAt(0).toUpperCase() + item.caseType.slice(1),
+  };
+}
+
+export function formatCustomers(item: any) {
+  return {
+    href: item.id,
+    name: item.fullName,
+    email: item.email,
+    category: item.plan,
+    role: "Co-Founder / CEO",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  };
+}

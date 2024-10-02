@@ -1,7 +1,8 @@
-import { ListUsers } from "@/components";
+import { DataHandler, ListUsers } from "@/components";
 import { ListOptions } from "./components/list-options";
-import { useEffect } from "react";
-import { useTitle } from "@/hooks";
+import { useEffect, useState } from "react";
+import { useBatchFetch, useTitle } from "@/hooks";
+import { useLawyersStore } from "@/store";
 
 const people = [
   {
@@ -56,8 +57,21 @@ const people = [
 
 export default function Lawyers() {
   const { changeTitle } = useTitle();
+  const { fetchLawyers } = useBatchFetch();
+  const { lawyersLoader, lawyersError, lawyers } = useLawyersStore();
+  const [lawyersFormat, setLawyersFormat] = useState([]);
+
+  useEffect(() => {
+    if (lawyers.docs === undefined) return;
+    // const newQuestions = questions.docs.map(formatCase);
+    console.log(lawyers);
+
+    // setCasesFormat(newCases);
+  }, [lawyers]);
+
   useEffect(() => {
     changeTitle("Abogados -  Arxatec");
+    fetchLawyers();
   }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
@@ -65,7 +79,15 @@ export default function Lawyers() {
         Abogados
       </h2>
       <ListOptions />
-      <ListUsers users={people} />
+
+      <DataHandler
+        data={lawyers}
+        error={lawyersError}
+        isLoading={lawyersLoader}
+        dataLength={lawyersFormat.length}
+      >
+        <ListUsers users={people} />
+      </DataHandler>
     </div>
   );
 }

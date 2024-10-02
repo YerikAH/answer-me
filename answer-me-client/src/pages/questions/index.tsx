@@ -1,24 +1,28 @@
-import { Pagination, Table } from "@/components";
-import { useTitle } from "@/hooks";
+import { DataHandler, Pagination, Table } from "@/components";
+import { useBatchFetch, useTitle } from "@/hooks";
 import { ROUTES } from "@/router/routes";
+import { useQuestionsStore } from "@/store";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const people = [
-  {
-    id: "0001",
-    date: "15 de Enero del 2024",
-    question: "¿Como denunciar a alguien que cometio un crimen?.",
-    state: "No resuelto",
-    lawyer: "No asignado",
-  },
-];
 
 export default function Questions() {
   const { changeTitle } = useTitle();
+  const { fetchQuestions } = useBatchFetch();
+  const { questionsLoader, questionsError, questions } = useQuestionsStore();
+  const [questionsFormat, setQuestionsFormat] = useState([]);
+
+  useEffect(() => {
+    if (questions.docs === undefined) return;
+    // const newQuestions = questions.docs.map(formatCase);
+    console.log(questions);
+
+    // setCasesFormat(newCases);
+  }, [questions]);
+
   useEffect(() => {
     changeTitle("Consultas -  Arxatec");
+    fetchQuestions();
   }, []);
   return (
     <div className="mt-12 w-full max-w-6xl mx-auto">
@@ -36,17 +40,26 @@ export default function Questions() {
       </div>
       {/* <TableOptions /> */}
       <div className="mt-8">
-        <Table
-          data={people}
-          headers={[
-            "ID",
-            "Fecha de publicación",
-            "Consulta",
-            "Estado",
-            "Abogado",
-          ]}
-        />
-        <Pagination />
+        <DataHandler
+          data={questions}
+          error={questionsError}
+          isLoading={questionsLoader}
+          dataLength={questionsFormat.length}
+        >
+          <>
+            <Table
+              data={questionsFormat}
+              headers={[
+                "ID",
+                "Fecha de publicación",
+                "Consulta",
+                "Estado",
+                "Abogado",
+              ]}
+            />
+            <Pagination />
+          </>
+        </DataHandler>
       </div>
     </div>
   );
