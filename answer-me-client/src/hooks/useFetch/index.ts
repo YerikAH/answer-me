@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
 import { AxiosError, AxiosResponse } from "axios";
 import { Error } from "@/types";
 

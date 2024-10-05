@@ -1,7 +1,13 @@
 export enum ROUTES {
+  // WEB
   HOME = "/",
   LOGIN = "/ingresar",
   REGISTER = "/registrarse",
+  TERM = "/terminos",
+  PRIVACY = "/privacidad",
+  ABOUT = "/acerca",
+  CONTACT = "/contactanos",
+  // APP
   NOT_FOUND = "*",
   DASHBOARD = "/dashboard",
   SETTINGS = "/configuracion",

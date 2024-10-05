@@ -1,0 +1,12 @@
+export { default as Case } from "./case";
+export { default as Dashboard } from "./dashboard";
+export { default as Settings } from "./settings";
+export { default as Cases } from "./cases";
+export { default as Lawyers } from "./lawyers";
+export { default as Users } from "./users";
+export { default as User } from "./user";
+export { default as Lawyer } from "./lawyer";
+export { default as CreateCase } from "./create-case";
+export { default as Questions } from "./questions";
+export { default as Question } from "./question";
+export { default as CreateQuestion } from "./create-question";

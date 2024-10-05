@@ -2,23 +2,29 @@ import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "./routes";
 import { Sidebar } from "@/layout";
 import {
+  About,
+  Contact,
+  Home,
+  Login,
+  NotFound,
+  Privacy,
+  Register,
+  Term,
+} from "@/pages/web";
+import {
   Case,
   Cases,
   CreateCase,
   CreateQuestion,
   Dashboard,
-  Home,
   Lawyer,
   Lawyers,
-  Login,
-  NotFound,
   Question,
   Questions,
-  Register,
   Settings,
   User,
   Users,
-} from "@/pages";
+} from "@/pages/app";
 
 const router = [
   {
@@ -36,6 +42,22 @@ const router = [
   {
     element: <Home />,
     path: ROUTES.HOME,
+  },
+  {
+    element: <Term />,
+    path: ROUTES.TERM,
+  },
+  {
+    element: <Privacy />,
+    path: ROUTES.PRIVACY,
+  },
+  {
+    element: <About />,
+    path: ROUTES.ABOUT,
+  },
+  {
+    element: <Contact />,
+    path: ROUTES.CONTACT,
   },
   {
     element: <Sidebar />,
