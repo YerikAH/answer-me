@@ -48,13 +48,13 @@ export function formatDateToReadable(isoDate: string) {
 export function getCategoryStyles(category: string) {
   switch (category) {
     case "gold":
-      return "bg-amber-100 text-amber-500 border-amber-200";
+      return "bg-amber-100 text-amber-500 ";
     case "silver":
-      return "bg-gray-100 text-gray-500 border-gray-200";
+      return "bg-gray-100 text-gray-500 ";
     case "copper":
-      return "bg-green-100 text-green-500 border-green-200";
+      return "bg-green-100 text-green-500";
     default:
-      return "bg-blue-100 text-blue-500 border-blue-200";
+      return "bg-blue-100 text-blue-500 ";
   }
 }
 
@@ -75,6 +75,16 @@ export function getErrorMessage(status: number) {
     errorMessages[status] ||
     "Ocurrió un error inesperado. Por favor, intenta nuevamente más tarde."
   );
+}
+
+export function firstUpperCase(str: string) {
+  if (str === undefined || str === null) return;
+  const strLower = str.toLowerCase();
+  const words = strLower.split(" ");
+
+  words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1).toLowerCase();
+
+  return words.join(" ");
 }
 
 export function handleFetchResponse(
@@ -114,7 +124,7 @@ export function handleFetchResponse(
 
 export function formatCase(item: any) {
   return {
-    id: item.caseID,
+    id: item.id,
     date: new Date(item.createdAt).toLocaleDateString("es-ES", {
       day: "2-digit",
       month: "long",
@@ -125,6 +135,22 @@ export function formatCase(item: any) {
     type: item.caseType.charAt(0).toUpperCase() + item.caseType.slice(1),
   };
 }
+export function formatQuestion(item: any) {
+  return {
+    id: item.id,
+    date: new Date(item.createdAt).toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }),
+    question: item.title,
+    state: firstUpperCase(item.status),
+    lawyer:
+      item?.lawyer === undefined
+        ? "Sin asignar"
+        : `${item.lawyer.fullName.slice(0, 10)}...`,
+  };
+}
 
 export function formatCustomers(item: any) {
   return {
@@ -133,6 +159,18 @@ export function formatCustomers(item: any) {
     email: item.email,
     category: item.plan,
     role: "Co-Founder / CEO",
+    imageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  };
+}
+
+export function formatLawyers(item: any) {
+  return {
+    name: item.fullName,
+    email: item.email,
+    role: `Especialista en tipos ${item.specialty}`,
+    id: item.id,
+    info: `Más de ${item.experience} años experiencia`,
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };

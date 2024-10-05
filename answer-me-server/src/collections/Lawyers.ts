@@ -110,6 +110,12 @@ const Lawyers: CollectionConfig = {
       relationTo: "media",
       label: "Certificados o documentos profesionales",
     },
+    {
+      name: "photo",
+      type: "upload",
+      relationTo: "media",
+      label: "Foto",
+    },
   ],
 };
 

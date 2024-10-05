@@ -8,6 +8,7 @@ interface Props {
     role: string;
     imageUrl: string;
     id: string;
+    info: string;
   }[];
 }
 export const ListUsers = ({ users }: Props) => {
@@ -40,9 +41,7 @@ export const ListUsers = ({ users }: Props) => {
                   {user.email}
                 </a>
               </p>
-              <p className="text-zinc-400 text-xs mt-2">
-                +8 años de experiencia / 200 casos resueltos
-              </p>
+              <p className="text-zinc-400 text-xs mt-2">{user.info}</p>
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-x-4">

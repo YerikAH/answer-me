@@ -11,7 +11,7 @@ type Store = {
 };
 
 export const useQuestionsStore = create<Store>()((set) => ({
-  questions: [],
+  questions: null,
   setQuestions: (newQuestions: unknown) =>
     set(() => ({ questions: newQuestions })),
   questionsLoader: false,

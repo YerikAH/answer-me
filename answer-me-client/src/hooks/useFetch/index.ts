@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AxiosError, AxiosResponse } from "axios";
 import { Error } from "@/types";
 
@@ -26,12 +26,14 @@ export const useFetch = (method: FetchFunction) => {
       setError(initError);
       return res;
     } catch (err) {
+      console.log("ERROR");
       const axiosError = err as AxiosError;
       const errorObj = {
         error: true,
         message: axiosError.message,
         status: axiosError.request.status,
       };
+      setData(null);
       setError(errorObj);
       return error;
     } finally {

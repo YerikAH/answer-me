@@ -35,7 +35,7 @@ export const Table = ({ headers, data, onlyRead }: Props) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-200 bg-transparent">
-                  {data.map((person) => (
+                  {data.map((person, jdx) => (
                     <tr
                       key={person.id}
                       className="hover:bg-zinc-50 transition-all cursor-pointer"
@@ -50,7 +50,7 @@ export const Table = ({ headers, data, onlyRead }: Props) => {
                           }`}
                           key={idx}
                         >
-                          {person[item]}
+                          {idx === 0 ? jdx + 1 : person[item]}
                         </td>
                       ))}
                     </tr>

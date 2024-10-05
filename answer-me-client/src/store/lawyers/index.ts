@@ -11,7 +11,7 @@ type Store = {
 };
 
 export const useLawyersStore = create<Store>()((set) => ({
-  lawyers: [],
+  lawyers: null,
   setLawyers: (newLawyers: unknown) => set(() => ({ lawyers: newLawyers })),
   lawyersLoader: false,
   setLawyersLoader: (newLoader: boolean) =>

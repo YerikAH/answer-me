@@ -1,57 +1,37 @@
-import { GoBack, IconLabel } from "@/components";
-import { ROUTES } from "@/router/routes";
-import { getCategoryStyles } from "@/utils";
-import { CaseDetails } from "./components/case-details";
-import { CalendarIcon } from "@heroicons/react/16/solid";
-import { BriefcaseIcon, CheckBadgeIcon } from "@heroicons/react/20/solid";
 import { useEffect } from "react";
-import { useTitle } from "@/hooks";
+import { useParams } from "react-router-dom";
+import { ROUTES } from "@/router/routes";
+import { getCase } from "@/services";
+import { useFetch, useTitle } from "@/hooks";
+import { DataHandler, GoBack } from "@/components";
+import { CaseHeader } from "./components/case-header";
+import { CaseDetails } from "./components/case-details";
 
 export default function Case() {
   const { changeTitle } = useTitle();
+  const params = useParams();
+  const { data, error, fetchData, loader } = useFetch(getCase);
+
   useEffect(() => {
     changeTitle("Casos -  Arxatec");
+    fetchData(params.id);
   }, []);
+
   return (
     <div className="mt-12 mx-auto w-full max-w-6xl">
       <GoBack name="Casos" route={ROUTES.CASES} />
-      <div className="flex items-center gap-4 mt-8">
-        <h1 className="text-xl font-semibold ">Caso #00001</h1>
-        <span
-          className={`font-medium px-2 py-[2px] text-xs  border rounded-md capitalize ${getCategoryStyles(
-            "copper"
-          )}`}
-        >
-          resuelto
-        </span>
-      </div>
-      <div className="mt-4 justify-between items-center flex flex-wrap gap-4">
-        <div className="flex items-center justify-start gap-8 flex-wrap">
-          <IconLabel
-            icon={CalendarIcon}
-            label="Creado el 24 de julio del 2024"
-          />
-          <IconLabel icon={BriefcaseIcon} label="Sin asignar" />
-          <IconLabel icon={CheckBadgeIcon} label="Gratuito" />
-        </div>
-        <div>
-          <div className=" flex items-center  gap-x-4">
-            <button
-              type="button"
-              className="text-sm font-semibold  text-gray-900 py-2 px-3 bg-zinc-50 hover:bg-zinc-200 transition-all rounded-lg border"
-            >
-              Eliminar
-            </button>
-            <button
-              type="submit"
-              className="inline-flex justify-center rounded-lg bg-zinc-900 px-3 transition-all py-2 text-sm font-semibold text-white shadow-sm hover:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-            >
-              Tomar caso
-            </button>
-          </div>
-        </div>
-      </div>
-      <CaseDetails />
+
+      <DataHandler
+        data={data}
+        dataLength={data?.length}
+        error={error}
+        isLoading={loader}
+      >
+        <>
+          <CaseHeader data={data} />
+          <CaseDetails data={data} />
+        </>
+      </DataHandler>
     </div>
   );
 }

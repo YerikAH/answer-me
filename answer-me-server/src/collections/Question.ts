@@ -46,10 +46,21 @@ const Questions: CollectionConfig = {
   },
   fields: [
     {
-      name: "question",
+      name: "title",
       type: "textarea",
       label: "Pregunta o Consulta",
       required: true,
+    },
+    {
+      name: "description",
+      type: "textarea",
+      label: "Descripción de la pregunta o consulta",
+      required: true,
+    },
+    {
+      name: "public",
+      type: "checkbox",
+      label: "¿Esta consulta será pública?",
     },
     {
       name: "user",
@@ -88,9 +99,17 @@ const Questions: CollectionConfig = {
       type: "select",
       label: "Categoría de la pregunta",
       options: [
-        { label: "Penal", value: "penal" },
-        { label: "Civil", value: "civil" },
-        { label: "Laboral", value: "laboral" },
+        { label: "Derecho de Familia", value: "familia" },
+        { label: "Derecho Civil", value: "civil" },
+        { label: "Derecho Penal", value: "penal" },
+        { label: "Derecho Laboral", value: "laboral" },
+        { label: "Derecho Mercantil", value: "mercantil" },
+        { label: "Derecho Fiscal o Tributario", value: "fiscal" },
+        { label: "Derecho Inmobiliario", value: "inmobiliario" },
+        { label: "Derecho Administrativo", value: "administrativo" },
+        { label: "Derecho Internacional", value: "internacional" },
+        { label: "Derecho Migratorio", value: "migratorio" },
+        { label: "Derecho de Sucesiones", value: "sucesiones" },
       ],
       required: true,
     },

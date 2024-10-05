@@ -11,7 +11,7 @@ type Store = {
 };
 
 export const useCasesStore = create<Store>()((set) => ({
-  cases: [],
+  cases: null,
   setCases: (newCases: unknown) => set(() => ({ cases: newCases })),
   casesLoader: false,
   setCasesLoader: (newLoader: boolean) =>

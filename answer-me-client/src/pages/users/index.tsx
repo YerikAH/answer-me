@@ -12,9 +12,10 @@ export default function Users() {
   const [customersFormat, setCustomersFormat] = useState([]);
 
   useEffect(() => {
-    if (customers.docs === undefined) return;
-    const newCustomers = customers.docs.map(formatCustomers);
     console.log(customers);
+
+    if (customers?.docs === undefined) return;
+    const newCustomers = customers.docs.map(formatCustomers);
 
     setCustomersFormat(newCustomers);
   }, [customers]);

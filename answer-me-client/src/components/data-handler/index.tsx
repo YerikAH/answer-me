@@ -3,6 +3,7 @@ import { XCircleIcon } from "@heroicons/react/16/solid";
 import { Loader } from "../loader";
 import { getErrorMessage } from "@/utils";
 import { FolderMinusIcon } from "@heroicons/react/20/solid";
+import { useEffect } from "react";
 
 interface Props {
   isLoading: boolean;
@@ -23,7 +24,6 @@ export const DataHandler = ({
   children,
   dataLength,
 }: Props) => {
-  console.log(dataLength);
   return (
     <>
       {isLoading && (
@@ -43,7 +43,7 @@ export const DataHandler = ({
         data !== null &&
         dataLength !== 0 &&
         children}
-      {dataLength === 0 && (
+      {dataLength === 0 && !error.error && !isLoading && (
         <ContainerError
           icon={FolderMinusIcon}
           message="Actualmente no hay datos disponibles para mostrar. Puedes agregar nuevos registros o verificar si aplicaste algún filtro que limite los resultados."

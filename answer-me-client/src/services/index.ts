@@ -69,3 +69,9 @@ export const getQuestions = withErrorHandling(() =>
 export const getCustomers = withErrorHandling(() =>
   axios.get(`${API}/customer`)
 );
+export const getCase = withErrorHandling((id: string) =>
+  axios.get(`${API}/cases/${id}`)
+);
+export const getQuestion = withErrorHandling((id: string) =>
+  axios.get(`${API}/questions/${id}`)
+);

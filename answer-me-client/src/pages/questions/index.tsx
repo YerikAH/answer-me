@@ -2,6 +2,7 @@ import { DataHandler, Pagination, Table } from "@/components";
 import { useBatchFetch, useTitle } from "@/hooks";
 import { ROUTES } from "@/router/routes";
 import { useQuestionsStore } from "@/store";
+import { formatQuestion } from "@/utils";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,11 +14,11 @@ export default function Questions() {
   const [questionsFormat, setQuestionsFormat] = useState([]);
 
   useEffect(() => {
-    if (questions.docs === undefined) return;
-    // const newQuestions = questions.docs.map(formatCase);
     console.log(questions);
+    if (questions?.docs === undefined) return;
+    const newQuestions = questions.docs.map(formatQuestion);
 
-    // setCasesFormat(newCases);
+    setQuestionsFormat(newQuestions);
   }, [questions]);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function Questions() {
             <Table
               data={questionsFormat}
               headers={[
-                "ID",
+                "N°",
                 "Fecha de publicación",
                 "Consulta",
                 "Estado",

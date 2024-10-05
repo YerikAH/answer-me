@@ -15,7 +15,7 @@ export default function Cases() {
   const [casesFormat, setCasesFormat] = useState([]);
 
   useEffect(() => {
-    if (cases.docs === undefined) return;
+    if (cases?.docs === undefined) return;
     const newCases = cases.docs.map(formatCase);
     setCasesFormat(newCases);
   }, [cases]);
@@ -51,7 +51,7 @@ export default function Cases() {
             <Table
               data={casesFormat}
               headers={[
-                "ID",
+                "N°",
                 "Fecha de publicación",
                 "Caso",
                 "Nombre completo",

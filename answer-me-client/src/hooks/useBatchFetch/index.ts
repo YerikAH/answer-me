@@ -72,7 +72,7 @@ export const useBatchFetch = () => {
     setData: (value: T) => void
   ) => {
     setLoader(loader);
-    if (error.error && !loader) {
+    if (error.error && !loader && data === null) {
       setError(error);
     } else if (data !== null && !error.error && !loader) {
       setData(data);

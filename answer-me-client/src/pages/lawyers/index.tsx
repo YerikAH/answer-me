@@ -3,6 +3,7 @@ import { ListOptions } from "./components/list-options";
 import { useEffect, useState } from "react";
 import { useBatchFetch, useTitle } from "@/hooks";
 import { useLawyersStore } from "@/store";
+import { formatLawyers } from "@/utils";
 
 const people = [
   {
@@ -62,11 +63,10 @@ export default function Lawyers() {
   const [lawyersFormat, setLawyersFormat] = useState([]);
 
   useEffect(() => {
-    if (lawyers.docs === undefined) return;
-    // const newQuestions = questions.docs.map(formatCase);
-    console.log(lawyers);
+    if (lawyers?.docs === undefined) return;
+    const newLawyers = lawyers.docs.map(formatLawyers);
 
-    // setCasesFormat(newCases);
+    setLawyersFormat(newLawyers);
   }, [lawyers]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function Lawyers() {
         isLoading={lawyersLoader}
         dataLength={lawyersFormat.length}
       >
-        <ListUsers users={people} />
+        <ListUsers users={lawyersFormat} />
       </DataHandler>
     </div>
   );

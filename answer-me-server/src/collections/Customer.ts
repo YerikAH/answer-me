@@ -72,6 +72,12 @@ const Customer: CollectionConfig = {
       required: false,
     },
     {
+      name: "photo",
+      type: "upload",
+      relationTo: "media",
+      label: "Foto",
+    },
+    {
       name: "payMethod",
       label: "Método de Pago",
       type: "select",
